@@ -25,7 +25,7 @@ jobs:
       - name: Build applications
         run: |
           cd proofofcombat-server && yarn install --frozen-lockfile && yarn generate
-          cd ../proofofcombat-ui && yarn install --frozen-lockfile && yarn generate && yarn playwright install --with-deps
+          cd ../proofofcombat-ui && yarn install --frozen-lockfile && yarn playwright install --with-deps
 
       - name: Run E2E tests
         run: |

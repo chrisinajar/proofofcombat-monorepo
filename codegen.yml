@@ -1,0 +1,15 @@
+schema:
+  - schema/typedefs.ts
+generates:
+  types/graphql.ts:
+    config:
+      contextType: schema/context#BaseContext
+      skipTypename: true
+      constEnums: true
+
+    plugins:
+      - typescript
+      - typescript-resolvers
+
+require:
+  - "ts-node/register/transpile-only"

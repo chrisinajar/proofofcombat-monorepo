@@ -1,0 +1,14 @@
+node_modules
+yarn-error.log
+data/
+certificate.pem
+privatekey.pem
+csr.csr
+.env
+types/graphql.ts
+.DS-Store
+.DS_Store
+test-data/
+dist/
+e2e-data/
+

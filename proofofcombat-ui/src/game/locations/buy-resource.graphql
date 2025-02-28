@@ -1,0 +1,21 @@
+mutation BuyResource($resource: String!, $amount: Int!) {
+  buyResource(resource: $resource, amount: $amount) {
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+    hero {
+      id
+      gold
+      home {
+        id
+        resources {
+          name
+          value
+          maximum
+        }
+      }
+    }
+  }
+}

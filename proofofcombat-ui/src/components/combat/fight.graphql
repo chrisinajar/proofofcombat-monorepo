@@ -1,0 +1,91 @@
+mutation Fight($monster: ID!, $attackType: AttackType, $stance: HeroStance) {
+  fight(monster: $monster, attackType: $attackType, stance: $stance) {
+    victory
+    experience
+    gold
+    didLevel
+    drop {
+      id
+      baseItem
+      owner
+      name
+      type
+      level
+      enchantment
+    }
+    log {
+      damage
+      attackType
+      damageType
+      success
+      isEnchantment
+      from
+      to
+      critical
+    }
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+    hero {
+      id
+      level
+      experience
+      attributePoints
+      gold
+      needed
+      skills {
+        attackingAccuracy
+        castingAccuracy
+        attackingDamage
+        castingDamage
+        vitality
+        resilience
+        regeneration
+      }
+      location {
+        map
+        x
+        y
+      }
+      combat {
+        health
+        maxHealth
+      }
+      stats {
+        luck
+        willpower
+        wisdom
+        intelligence
+        constitution
+        dexterity
+        strength
+      }
+
+      inventory {
+        id
+        baseItem
+        owner
+        name
+        type
+        level
+        enchantment
+      }
+
+      activeStance
+      availableStances
+    }
+    monster {
+      id
+      monster {
+        id
+        name
+        combat {
+          health
+          maxHealth
+        }
+      }
+    }
+  }
+}

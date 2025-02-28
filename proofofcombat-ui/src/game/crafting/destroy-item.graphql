@@ -1,0 +1,23 @@
+mutation DestroyItem($item: ID!) {
+  destroyItem(item: $item) {
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+    hero {
+      id
+      enchantingDust
+
+      inventory {
+        id
+        baseItem
+        owner
+        name
+        type
+        level
+        enchantment
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+mutation AttackHero($id: ID!, $attackType: AttackType, $stance: HeroStance) {
+  attackHero(id: $id, attackType: $attackType, stance: $stance) {
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+    otherHero {
+      id
+      name
+      level
+      class
+      local
+      combat {
+        health
+        maxHealth
+      }
+    }
+    log {
+      damage
+      attackType
+      isEnchantment
+      success
+      from
+      isMesmerize
+      critical
+      to
+    }
+    victory
+
+    hero {
+      id
+      gold
+      combat {
+        health
+        maxHealth
+      }
+    }
+  }
+}

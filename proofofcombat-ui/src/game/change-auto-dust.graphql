@@ -1,0 +1,15 @@
+mutation ChangeAutoDust($value: Int!) {
+  changeAutoDust(value: $value) {
+    hero {
+      id
+      settings {
+        autoDust
+      }
+    }
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+  }
+}

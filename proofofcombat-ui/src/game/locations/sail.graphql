@@ -1,0 +1,44 @@
+mutation Sail($x: Int!, $y: Int!) {
+  sail(x: $x, y: $y) {
+    hero {
+      id
+      gold
+      location {
+        x
+        y
+        map
+      }
+      inventory {
+        id
+        baseItem
+        owner
+        name
+        type
+        level
+        enchantment
+      }
+      currentQuest {
+        id
+        message
+      }
+    }
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+    monsters {
+      id
+      monster {
+        id
+        name
+        level
+        combat {
+          health
+          maxHealth
+        }
+        attackType
+      }
+    }
+  }
+}

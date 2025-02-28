@@ -1,0 +1,16 @@
+mutation Heal {
+  heal {
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+    hero {
+      id
+      combat {
+        maxHealth
+        health
+      }
+    }
+  }
+}

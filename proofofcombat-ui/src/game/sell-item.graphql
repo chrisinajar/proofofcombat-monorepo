@@ -1,0 +1,49 @@
+mutation SellItem($item: ID!) {
+  sell(item: $item) {
+    hero {
+      id
+      gold
+      inventory {
+        id
+        owner
+        baseItem
+        name
+        type
+        level
+        enchantment
+      }
+      equipment {
+        id
+        accessories {
+          id
+        }
+        footArmor {
+          id
+        }
+        headArmor {
+          id
+        }
+        legArmor {
+          id
+        }
+        handArmor {
+          id
+        }
+        bodyArmor {
+          id
+        }
+        rightHand {
+          id
+        }
+        leftHand {
+          id
+        }
+      }
+    }
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+  }
+}

@@ -1,0 +1,100 @@
+---
+description: project overview, gameplay, and story
+globs: 
+---
+# Project Overview
+This is a game called "Proof of Combat", a browser-based RPG where players progressively become more powerful by defeating monsters and completing quests. The project consists of both the server-side game logic and the client-side user interface in a unified repository structure.
+
+## Project Structure
+- `proofofcombat-server/`: Server-side game logic and API
+- `proofofcombat-ui/`: Client-side user interface
+
+## Server
+### Server Tech Stack
+- Node.js & Express for server
+- GraphQL API using Apollo Server
+- GraphQL Code Generator for auto-generating types
+- LevelDB for flat file database
+- Single-threaded, single instance architecture
+
+### Server Code Organization
+- `schema/*`: GraphQL resolvers and API endpoints
+  - `schema/admin/`: Admin specific code, see "Put all admin functionality in admin specific folders" rule for details
+  - `schema/quests/`: Game content and quest mechanics
+  - `schema/quests/text/`: Quest dialogue and text content
+- `calculations/`: Character and monster stat calculation system
+- `combat/`: Combat mechanics implementation
+- `constants/`: Game data and location information
+- `types/graphql.ts`: Auto-generated GraphQL types, check the "Always generate types from graphql" rule for details
+
+## Client
+### Client Tech Stack
+- React & Next.JS
+- Material UI & styled-components
+- Apollo Client
+- GraphQL Code Generator for auto-generating types and hooks
+
+### Client Code Organization
+- `pages/`: The Next.JS routes, each file should be as simple as possible and just export the correct component
+- `src/admin/`: Admin specific code, see "Put all admin functionality in admin specific folders" rule for details
+- `src/components/`: General react components, especially structural or reusable ones
+- `src/game/`: Most of the actual game UI
+- `src/hooks/`: Every single react hook we use
+- `src/generated/`: The types, queries, and hooks generated from GraphQL Codegen
+
+## Development Notes
+- Focus on simplicity over scalability
+- Contains legacy code pending cleanup
+- Some systems partially implemented
+- Ongoing migration of older systems
+
+## Game and Story
+
+### Character Progression
+1. Champion Tier (Early Game)
+   - Initial level cap
+   - Basic abilities
+   - Limited area access
+2. Hero Tier (Mid Game)
+   - Higher level cap
+   - Faster leveling
+   - Settlement access
+3. Ascended Tier (Late Game)
+   - Repeatable resets
+   - Full area access
+   - Artifact system
+4. Transcended Tier (End Game)
+   - Ultimate power level
+   - Void dimension access
+   - Special gear crafting
+
+### Core Mechanics
+
+#### Combat System
+- Turn-based combat via web requests
+- Damage order: Enchantments → Attacker → Defender
+- Monster drops: XP, gold, random items
+- Boss encounters require special conditions
+
+#### Crafting System
+- Items have: slot, tier, enchantment, imbuement
+- Crafting Hammer abilities:
+  - Destroy: Item → Enchanting dust
+  - Disenchant: Separate enchantment
+  - Enchant: Apply new enchantment
+- Late-game imbuement system with artifact affixes
+
+#### Settlement System
+- Location-based building placement
+- Resource production buildings
+- Military structures
+- Special quest-unlocking buildings
+- Inter-settlement warfare mechanics
+
+### Key Locations
+- Palace of Rotherham (Queen's Seat)
+- Amixea's Witchforge (Transcended Crafting)
+- Void Conduits (Dimensional Portals)
+- Naxxremis's Grotto (Underwater Market)
+- The First Tavern (Starting Hub)
+- Altar of Transcendence (Gear Progression)

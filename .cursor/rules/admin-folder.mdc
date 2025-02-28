@@ -1,0 +1,9 @@
+---
+description: Put all admin functionality in admin specific folders
+globs: 
+---
+There is some admin only functionality, since this is an online game. This can range from testing functionality to content moderation, but we want to keep it separated from any and all game logic.
+
+ * Always put all admin endpoints in the `schema/admin/` folder
+ * Always make sure admin functionality is locked down using `@auth @admin` decorators
+ * Any testing functionality can be used to cheat, always consider those as admin only

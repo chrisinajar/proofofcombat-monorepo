@@ -1,0 +1,6 @@
+---
+description: Always keep the UI static deployable
+globs: pages/**
+---
+# Never use server side rendering
+Every route should be statically compilable so that the UI can be deployed to a CDN. We do not run a UI server in production.

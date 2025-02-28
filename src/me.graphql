@@ -1,0 +1,751 @@
+query Me {
+  me {
+    now
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+      access
+
+      hero {
+        version
+        id
+        name
+        class
+
+        level
+        levelCap
+        experience
+        needed
+        gold
+        enchantingDust
+        attributePoints
+        enchantments
+
+        skillPercent
+        activeSkill
+
+        buffs {
+          blessing
+        }
+
+        skills {
+          attackingAccuracy
+          castingAccuracy
+          attackingDamage
+          castingDamage
+          vitality
+          resilience
+          regeneration
+        }
+
+        location {
+          x
+          y
+          map
+        }
+
+        questLog {
+          washedUp {
+            id
+            progress
+            finished
+            started
+            lastEvent {
+              quest
+              message
+              id
+            }
+          }
+          rebirth {
+            id
+            progress
+            finished
+            started
+            lastEvent {
+              quest
+              message
+              id
+            }
+          }
+          droop {
+            id
+            progress
+            finished
+            started
+            lastEvent {
+              quest
+              message
+              id
+            }
+          }
+          clockwork {
+            id
+            progress
+            finished
+            started
+            lastEvent {
+              quest
+              message
+              id
+            }
+          }
+          settlements {
+            id
+            progress
+            finished
+            started
+            lastEvent {
+              quest
+              message
+              id
+            }
+          }
+          tavernChampion {
+            id
+            progress
+            finished
+            started
+            lastEvent {
+              quest
+              message
+              id
+            }
+          }
+          meetTheQueen {
+            id
+            progress
+            finished
+            started
+            lastEvent {
+              quest
+              message
+              id
+            }
+          }
+          id
+        }
+        currentQuest {
+          quest
+          message
+          id
+        }
+
+        inventory {
+          id
+          baseItem
+          owner
+          name
+          type
+          level
+          enchantment
+
+          imbue {
+            artifact {
+              id
+              owner
+              name
+              level
+
+              attributes {
+                namePrefix {
+                  type
+                  magnitude
+                }
+                namePostfix {
+                  type
+                  magnitude
+                }
+                titlePrefix {
+                  type
+                  magnitude
+                }
+                titlePostfix {
+                  type
+                  magnitude
+                }
+
+                bonusAffixes {
+                  type
+                  magnitude
+                }
+              }
+            }
+            affixes
+          }
+        }
+        equipment {
+          id
+          accessories {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          footArmor {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          headArmor {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          legArmor {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          handArmor {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          bodyArmor {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          rightHand {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          leftHand {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+
+            imbue {
+              artifact {
+                id
+                owner
+                name
+                level
+
+                attributes {
+                  namePrefix {
+                    type
+                    magnitude
+                  }
+                  namePostfix {
+                    type
+                    magnitude
+                  }
+                  titlePrefix {
+                    type
+                    magnitude
+                  }
+                  titlePostfix {
+                    type
+                    magnitude
+                  }
+
+                  bonusAffixes {
+                    type
+                    magnitude
+                  }
+                }
+              }
+              affixes
+            }
+          }
+          artifact {
+            id
+            owner
+            name
+            level
+
+            attributes {
+              namePrefix {
+                type
+                magnitude
+              }
+              namePostfix {
+                type
+                magnitude
+              }
+              titlePrefix {
+                type
+                magnitude
+              }
+              titlePostfix {
+                type
+                magnitude
+              }
+
+              bonusAffixes {
+                type
+                magnitude
+              }
+            }
+          }
+        }
+
+        pendingArtifact {
+          id
+          owner
+          name
+          level
+
+          attributes {
+            namePrefix {
+              type
+              magnitude
+            }
+            namePostfix {
+              type
+              magnitude
+            }
+            titlePrefix {
+              type
+              magnitude
+            }
+            titlePostfix {
+              type
+              magnitude
+            }
+
+            bonusAffixes {
+              type
+              magnitude
+            }
+          }
+        }
+
+        combat {
+          health
+          maxHealth
+        }
+        stats {
+          dexterity
+          intelligence
+          willpower
+          constitution
+          wisdom
+          luck
+          strength
+        }
+
+        combatStats {
+          damageAmplification
+          damageReduction
+          armorReduction
+          enemyStats {
+            luck
+            willpower
+            wisdom
+            intelligence
+            constitution
+            strength
+            dexterity
+          }
+          stats {
+            willpower
+            constitution
+            dexterity
+            intelligence
+            luck
+            strength
+            wisdom
+          }
+
+          physicalResistance
+          magicalResistance
+          fireResistance
+          iceResistance
+          lightningResistance
+          holyResistance
+          blightResistance
+        }
+        outgoingTrades {
+          gold
+          item {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+          }
+          toName
+          toId
+          fromName
+          fromId
+          id
+        }
+        incomingTrades {
+          gold
+          item {
+            id
+            baseItem
+            owner
+            name
+            type
+            level
+            enchantment
+          }
+          toName
+          toId
+          fromName
+          fromId
+          id
+        }
+
+        settings {
+          autoDust
+          minimumStats {
+            constitution
+            dexterity
+            intelligence
+            luck
+            strength
+            willpower
+            wisdom
+          }
+        }
+        home {
+          id
+          location {
+            x
+            y
+            map
+          }
+          upgrades
+          resources {
+            name
+            value
+            maximum
+          }
+          upkeep {
+            stone
+            wood
+            food
+            water
+          }
+          owner
+          publicOwner {
+            id
+            name
+            level
+            class
+            local
+            combat {
+              health
+              maxHealth
+            }
+          }
+          type
+          connections {
+            id
+            location {
+              x
+              y
+              map
+            }
+            upgrades
+            resources {
+              name
+              value
+              maximum
+            }
+            owner
+            publicOwner {
+              id
+              name
+              level
+              class
+              local
+              combat {
+                health
+                maxHealth
+              }
+            }
+            type
+            availableUpgrades {
+              cost {
+                name
+                value
+              }
+              name
+              type
+            }
+          }
+        }
+        activeStance
+        availableStances
+      }
+    }
+  }
+}

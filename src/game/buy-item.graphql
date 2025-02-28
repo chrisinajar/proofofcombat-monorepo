@@ -1,0 +1,49 @@
+mutation BuyItem($baseItem: ID!) {
+  buy(baseItem: $baseItem) {
+    hero {
+      id
+      gold
+      inventory {
+        id
+        baseItem
+        owner
+        name
+        type
+        level
+        enchantment
+      }
+      equipment {
+        id
+        accessories {
+          id
+        }
+        footArmor {
+          id
+        }
+        headArmor {
+          id
+        }
+        legArmor {
+          id
+        }
+        handArmor {
+          id
+        }
+        bodyArmor {
+          id
+        }
+        rightHand {
+          id
+        }
+        leftHand {
+          id
+        }
+      }
+    }
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+  }
+}

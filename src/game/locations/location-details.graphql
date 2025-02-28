@@ -1,0 +1,125 @@
+query LocationDetails($location: LocationInput!) {
+  locationDetails(location: $location) {
+    voidTravel
+    playerLocations {
+      id
+      location {
+        x
+        y
+        map
+      }
+      upgrades
+      resources {
+        name
+        value
+        maximum
+      }
+      owner
+      publicOwner {
+        id
+        name
+        level
+        class
+        local
+        combat {
+          health
+          maxHealth
+        }
+      }
+      type
+      connections {
+        id
+        location {
+          x
+          y
+          map
+        }
+        upgrades
+        resources {
+          name
+          value
+          maximum
+        }
+        owner
+        publicOwner {
+          id
+          name
+          level
+          class
+          local
+          combat {
+            health
+            maxHealth
+          }
+        }
+        type
+      }
+    }
+    specialLocations {
+      description
+      type
+      name
+      location {
+        x
+        y
+        map
+      }
+    }
+    location {
+      x
+      y
+      map
+    }
+    terrain {
+      terrain
+    }
+    shop {
+      name
+      trades {
+        id
+        price {
+          gold
+          dust
+          baseItems
+          enchantments
+          questItems
+          description
+        }
+        offer {
+          gold
+          dust
+          baseItems
+          enchantments
+          questItems
+          description
+        }
+      }
+    }
+    players {
+      id
+      name
+      level
+      class
+      local
+      combat {
+        health
+        maxHealth
+      }
+    }
+
+    neighborTerrain {
+      north {
+        terrain
+      }
+      south {
+        terrain
+      }
+      east {
+        terrain
+      }
+      west {
+        terrain
+      }
+    }
+  }
+}

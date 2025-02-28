@@ -1,0 +1,25 @@
+mutation DismissQuest {
+  dismissQuest {
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+    hero {
+      id
+      inventory {
+        id
+        baseItem
+        owner
+        name
+        type
+        level
+        enchantment
+      }
+      currentQuest {
+        id
+        message
+      }
+    }
+  }
+}

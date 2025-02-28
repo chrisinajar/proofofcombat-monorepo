@@ -1,0 +1,37 @@
+mutation MoveLocation($direction: MoveDirection!) {
+  move(direction: $direction) {
+    hero {
+      id
+      location {
+        y
+        x
+      }
+      inventory {
+        id
+        baseItem
+        owner
+        name
+        type
+        level
+        enchantment
+      }
+      currentQuest {
+        id
+        message
+      }
+    }
+    monsters {
+      id
+      monster {
+        id
+        name
+        level
+      }
+    }
+    account {
+      id
+      nextAllowedAction
+      timeRemaining
+    }
+  }
+}

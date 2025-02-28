@@ -29,7 +29,7 @@ jobs:
 
       - name: Run E2E tests
         run: |
-          cd proofofcombat-ui && playwright test --reporter=html,line
+          cd proofofcombat-ui && yarn playwright test --reporter=html,line
         env:
           CI: true
 

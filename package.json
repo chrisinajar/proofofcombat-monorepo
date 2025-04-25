@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "push-server": "git subtree push --prefix=proofofcombat-server server main",
-    "push-ui": "git subtree push --prefix=proofofcombat-ui ui main",
+    "push-server": "git subtree push --prefix=proofofcombat-server server $(git branch --show-current)",
+    "push-ui": "git subtree push --prefix=proofofcombat-ui ui $(git branch --show-current)",
     "push": "yarn push-server && yarn push-ui",
     "test": "jest"
   },

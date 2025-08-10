@@ -45,13 +45,10 @@ export function findTerrainType(
   magnitude = magnitude - 1;
   if (magnitude === 0) {
     direction = (direction + 1) % 4;
+    if (direction === 0 || direction === 2) {
+      maxMagnitude++;
+    }
     magnitude = maxMagnitude;
-  }
-  if (direction === 0) {
-    magnitude++;
-  }
-  if (direction === 2) {
-    magnitude++;
   }
   return findTerrainType(x, y, terrain, direction, maxMagnitude, magnitude);
 }

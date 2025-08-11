@@ -1,7 +1,6 @@
 ---
-description: Always use yarn and not npm
-globs: 
+description: Use Yarn (Classic) not npm
+globs: **/*
 ---
-- We do not use the `npm` or `npx` commands.
-- Use `yarn` and its ecosystem for all node interractions
-- Read through package.json files to find runnable scripts for `yarn`
+Use Yarn Classic across the repo. Example commands are provided in runbooks and AGENTS.md.
+

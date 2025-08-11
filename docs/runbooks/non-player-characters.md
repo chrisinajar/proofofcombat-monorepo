@@ -1,7 +1,16 @@
 ---
+id: non-player-characters
 description: A description of all non player characters
-globs: proofofcombat-server/constants/**, docs/**
+owner: server, ui
+triggers:
+  - proofofcombat-server/constants/**
+  - docs/**
+checklist:
+  - Keep NPC lore consistent
+  - Update related quests and UI text
+source: cursor-rule
 ---
+
 #### Amixea
 - Ancient witch at the Witchforge
 - Trades: Enchanting dust for Transcended gear

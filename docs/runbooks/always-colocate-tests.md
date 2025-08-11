@@ -1,6 +1,14 @@
 ---
+id: always-colocate-tests
 description: Always co-locate automated tests
-globs: **/*test*
+owner: server, ui
+triggers:
+  - **/*test* 
+checklist:
+  - Co-locate tests with code
+  - Name tests <name>.test.ts[x]
+  - Avoid __tests__ directories
+source: cursor-rule
 ---
 All tests should be co-located with the code they test. Do not use patterns like dedicated tests directories, instead all tests should be named after the file they test.
 

@@ -1,6 +1,14 @@
 ---
+id: never-use-inline-graphql
 description: Never use graphql tag in the UI project
-globs: proofofcombat-ui/src/**/*
+owner: ui
+triggers:
+  - proofofcombat-ui/src/**/*
+checklist:
+  - Write .graphql files only
+  - Use generated hooks
+  - Run UI codegen after changes
+source: cursor-rule
 ---
 - Always write .graphql files in the UI project
 - Never write inline graphql using the gql` tag

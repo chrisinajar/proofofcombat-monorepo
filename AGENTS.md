@@ -45,3 +45,12 @@
 
 ## Security & Config
 - Never commit secrets. Copy `.env.example` to `.env` in `proofofcombat-ui/`. Server loads env via `dotenv`; TLS (if used) from `privatekey.pem`/`certificate.pem`.
+
+## Agent Quickstart
+- `yarn agent:bootstrap`: install deps for server and UI; install Playwright.
+- `yarn agent:status`: show environment, install status, and runbook drift.
+- `yarn agent:runbook:sync`: sync `docs/runbooks` to `.cursor/rules`.
+- `yarn agent:runbook:new <id> "Title"`: scaffold a new runbook.
+- `yarn agent:check`: guardrails (no inline gql), runbook drift check, codegen drift.
+
+Runbooks live in `docs/runbooks/` with YAML frontmatter. Update runbooks whenever you discover a gotcha; then run `yarn agent:runbook:sync` to keep `.cursor/rules` aligned.

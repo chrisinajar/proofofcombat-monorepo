@@ -1,6 +1,13 @@
 ---
+id: project-description
 description: Project overview, gameplay, and story
-globs: docs/**
+owner: server, ui
+triggers:
+  - docs/**
+checklist:
+  - Keep structure section current
+  - Update tech stack if upgraded
+source: cursor-rule
 ---
 # Project Overview
 This is a game called "Proof of Combat", a browser-based RPG where players progressively become more powerful by defeating monsters and completing quests. The project consists of both the server-side game logic and the client-side user interface in a unified repository structure.

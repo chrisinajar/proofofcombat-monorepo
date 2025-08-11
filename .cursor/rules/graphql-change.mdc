@@ -1,0 +1,17 @@
+---
+description: Safely change GraphQL schema and UI usage
+globs: proofofcombat-server/schema/**/*.graphql, proofofcombat-ui/src/**/*.graphql
+---
+Summary: Make a schema change without breaking generated types, UI hooks, or admin contracts.
+
+Steps:
+1) Edit schema/resolvers; admin endpoints must live in `schema/admin/` and enforce `@auth @admin`.
+2) Run `yarn --cwd proofofcombat-server generate && yarn --cwd proofofcombat-ui generate`.
+3) Refactor UI to use generated hooks (no inline `gql`), fix types.
+4) Run `yarn test` at root; then `yarn --cwd proofofcombat-ui e2e` as needed.
+5) If anything surprising came up, add a short note under Gotchas.
+
+Gotchas:
+- If generated files changed but weren’t committed, `agent:check` will fail (drift guard).
+- Do not import `gql` in UI; see runbook `never-use-inline-graphql`.
+

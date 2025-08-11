@@ -1,0 +1,25 @@
+name: Agent Guards
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check runbook ↔ Cursor rules drift
+        run: node scripts/sync-runbooks-to-cursor.js --verify
+      - name: UI guard - no inline gql
+        run: node scripts/check-no-inline-gql.js
+      - name: Install deps
+        run: |
+          yarn --cwd proofofcombat-server install --frozen-lockfile
+          yarn --cwd proofofcombat-ui install --frozen-lockfile
+      - name: Codegen drift
+        run: node scripts/check-codegen-drift.js
+

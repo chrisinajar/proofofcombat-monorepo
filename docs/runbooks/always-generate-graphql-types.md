@@ -1,7 +1,17 @@
 ---
+id: always-generate-graphql-types
 description: Always generate types from graphql
-globs: proofofcombat-server/schema/**/*, proofofcombat-ui/src/**/*.graphql
+owner: server, ui
+triggers:
+  - proofofcombat-server/schema/**/*
+  - proofofcombat-ui/src/**/*.graphql
+checklist:
+  - Run both codegens after changes
+  - Never edit generated files
+  - Use generated hooks in UI
+source: cursor-rule
 ---
+
 # GraphQL Code Generator
 - The GraphQL Code Generator is used to auto-generate the types for both API and client
 - It also generates hooks and code for the UI

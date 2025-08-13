@@ -20,6 +20,7 @@ Server
 - admin-folder: Put all admin functionality in admin specific folders — Use to keep admin code isolated and locked down.
 - graphql-change: Safely change GraphQL schema and UI usage — Use for schema edits impacting server and UI.
 - always-generate-graphql-types: Always generate types from graphql — Use whenever schema or `.graphql` files change.
+- upgrade-new-fields: Ensure new GraphQL fields are upgraded — Use when adding fields to persisted types (e.g., `Hero`).
 
 UI
 - add-ui-query: Add a new UI query using generated hooks — Use when introducing a new GraphQL operation in the UI.

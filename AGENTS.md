@@ -1,5 +1,15 @@
 # Repository Guidelines
 
+## Runbooks First
+- Always consult runbooks before making changes: open `docs/runbooks/` (authoritative) or `.cursor/rules/` (synced copies) and identify the 1–3 most relevant runbooks by topic or file globs.
+- Start with the index: see `docs/runbooks/index.md` for a concise list of all runbooks with summaries and when to use them.
+  - From the index, choose 1–3 runbooks whose globs/area/owner match your change.
+- During planning, add a step to consult runbooks and name which ones you used (by `id`/filename). If none apply, state that explicitly.
+- When answering or implementing, reference runbooks by `id` (e.g., `e2e-tests`, `graphql-change`) and follow their checklists. If a runbook contradicts a general guideline, prefer the runbook.
+- Keep runbooks in sync: run `yarn agent:runbook:sync` after editing or adding runbooks; run `yarn agent:check` to verify there’s no drift.
+- When you discover a new repeatable workflow or gotcha, create or update a runbook with `yarn agent:runbook:new <id> "Title"`, then sync.
+
+
 ## Project Structure
 - `proofofcombat-server`: Apollo GraphQL + Express + Socket.IO (TypeScript). Tests sit next to code (`*.test.ts`). Admin-only resolvers live in `schema/admin/` and require `@auth @admin`.
 - `proofofcombat-ui`: Next.js app with Apollo Client. UI code in `src/`, pages in `pages/`, static assets in `public/`. Playwright e2e tests in `e2e/`.

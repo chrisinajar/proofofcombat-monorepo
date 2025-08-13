@@ -1,0 +1,37 @@
+---
+description: Index of runbooks with one-line summaries and when to use them
+globs: docs/runbooks/**
+---
+# Runbook Index
+
+Start here. Pick 1–3 runbooks whose “when to use” matches your change by file globs, area, or owner.
+
+Server
+- add-admin-resolver: Add a new admin-only resolver safely — Use when adding/modifying resolvers under `schema/admin/` with `@auth @admin`.
+- admin-folder: Put all admin functionality in admin specific folders — Use to keep admin code isolated and locked down.
+- graphql-change: Safely change GraphQL schema and UI usage — Use for schema edits impacting server and UI.
+- always-generate-graphql-types: Always generate types from graphql — Use whenever schema or `.graphql` files change.
+
+UI
+- add-ui-query: Add a new UI query using generated hooks — Use when introducing a new GraphQL operation in the UI.
+- never-use-inline-graphql: Never use graphql tag in the UI project — Use to enforce `.graphql` files + generated hooks.
+- ui-should-be-static: UI must remain static-exportable — Use to validate static-only patterns during UI changes.
+- static-export-troubleshooting: Keep Next.js UI static-exportable and fix export issues — Use when `yarn build` or export fails.
+- always-keep-accessibility-in-mind: Always keep a11y in mind when working on the UI — Use to ensure accessible UI changes.
+
+E2E
+- e2e-tests: E2E tests rules and guidelines — Use for writing/maintaining Playwright tests; selectors, running single tests, no timeouts.
+- e2e-triage: Quickly triage failing Playwright tests without timeouts — Use when E2E tests fail locally or in CI; fix selectors/flow.
+
+Meta / Shared
+- fix-codegen-drift: Resolve generated types drift between schema and committed files — Use when CI or `agent:check` reports codegen drift.
+- always-colocate-tests: Always co-locate automated tests — Use to check test placement and naming.
+- finalizing-changes: Finalizing changes — Use as a pre-PR checklist (tests, cleanup, a11y, checks).
+- use-yarn-not-npm: Use Yarn (Classic) not npm — Use for package management consistency.
+- never-run-commands-in-the-root-directory: Never run commands in the root directory — Use to run commands within subprojects only.
+- project-description: Project overview, gameplay, and story — Use for high-level context and structure.
+- non-player-characters: A description of all non player characters — Use for lore and NPC references.
+
+Maintenance
+- After adding or editing runbooks or this index, run `yarn agent:runbook:sync`.
+- Verify no drift with `yarn agent:check`.

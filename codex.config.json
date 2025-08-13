@@ -1,0 +1,6 @@
+{
+  "sandbox": { "filesystem": "danger-full-access", "network": "off" },
+  "approvals": "on-request",
+  "commandTimeoutMs": 600000
+}
+

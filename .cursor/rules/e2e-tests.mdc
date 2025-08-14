@@ -4,6 +4,11 @@ globs: proofofcombat-ui/e2e/**
 ---
 The answer is never timeouts.
 
+# Quickstart
+- Run locally with `yarn --cwd proofofcombat-ui e2e` — no extra install steps required.
+- The e2e harness starts the server/UI on test ports and triggers UI GraphQL codegen automatically. Do not start your own server.
+- To run a single spec: `yarn --cwd proofofcombat-ui e2e e2e/tests/<file>.spec.ts`.
+
 # Select elements by id and testid
 Do not ever select elements by things like material ui classnames or the text within them. This is fragile, and small usability changes could potentially break tests. We want our tests to be semantic in nature, so instead we select elements by ID's when they're already available or by `data-testid` when there is no id.
 
@@ -20,3 +25,11 @@ Most actions, especially UI ones, happen within individual milliseconds. If an e
 # The server probably isn't crashing
 If you see `Server process exited with code 1` at the end of the tests running, this is because we kill the server at the end of tests. The odds are the server is not crashing, especially if there is no stack trace along with it.
 
+# Seeding fixtures and equipment-state tests
+- Use `seedFixture('<name>', E2E_DB_PATH)` from `e2e/helpers/database.ts` to seed precise hero/account state.
+- Place JSON fixtures in `proofofcombat-ui/e2e/fixtures/`. Examples: `equip-melee.json`, `equip-focus.json`, `equip-shield.json`, `equip-ranged.json`, `equip-battlemage.json`.
+- These tests are a robust way to validate equipment-specific UI behavior (e.g., attack button availability) without fragile in-test crafting flows.
+
+# Gotchas
+- Do not run `playwright install`. The repo already includes `@playwright/test` and manages browser binaries during CI where needed. Local runs should work with just `yarn e2e` in the UI project.
+- Schema/UI drift: after server schema changes, run server codegen and re-run UI codegen or the e2e quickstart will regenerate at boot.

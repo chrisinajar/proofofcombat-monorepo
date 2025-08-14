@@ -45,6 +45,11 @@ This document maps the UI structure and highlights opportunities to improve the 
 - Game (main UI): `src/game/index.tsx`
   - Tab navigation (`@mui/lab`): Welcome, Combat, Shop, Inventory, Map, Quests, Settings, Admin
   - Top-of-page dynamic banners: `LevelUpBox`, `QuestEventDisplay`
+  - Welcome → Next Steps onboarding card:
+    - Shows until first rebirth completes (check `hero.levelCap > 10`).
+    - Don’t embed `RebirthMenu` here; instruct to rebirth via Inventory and offer an “Open Inventory” helper button.
+    - Nudge Washed Up with “Maybe try going for a swim…” until it starts.
+    - Strike-through heuristics: Combat after any EXP; Map after first movement (localStorage) or Washed Up started; Shop after any gold or inventory.
   - Feature tabs:
     - Combat: `src/components/combat/*` (list, stance selector, battle log)
     - Shop: `src/game/shop/*` (server-provided items)
@@ -168,4 +173,3 @@ This document maps the UI structure and highlights opportunities to improve the 
 
 - Validate these changes against `docs/runbooks/ui-should-be-static.md` to preserve static export.
 - Consider E2E coverage additions after UX changes (selectors via `data-testid`), see `docs/runbooks/e2e-tests.md`.
-

@@ -56,6 +56,9 @@ This document maps the UI structure and highlights opportunities to improve the 
     - Inventory: `src/game/inventory/*`
     - Map/Locations: `src/game/locations/*` (movement, special locations, settlement manager, docks, NPC shop)
     - Quests: `src/game/quest-log/*`
+      - Read descriptions via `useQuestDescriptionQuery` (no inline gql).
+      - Sorting shows unfinished before finished, then by progress.
+      - Rebirth: treat first rebirth completion as `hero.levelCap > 10` (don’t use `hero.version`).
     - Settings: `src/game/settings/*`
     - Admin: `src/admin/*` (loaded dynamically)
   - Chat: `src/components/chat/*` (Socket.IO, tabs for all/chat/notifications + private threads)

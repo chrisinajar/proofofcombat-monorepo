@@ -1,0 +1,40 @@
+---
+description: UI guidance for interpreting Quest Log state, with special notes for Rebirth and Washed Up
+globs: proofofcombat-ui/src/game/quest-log/**, proofofcombat-ui/src/game/index.tsx, proofofcombat-ui/src/me.graphql
+---
+# Quest Log Semantics (UI)
+
+The Quest Log is available on the hero as `hero.questLog` with entries of type `QuestProgress`:
+
+- `started` (boolean): quest has begun
+- `finished` (boolean): quest has finished
+- `progress` (int): implementation-defined progress counter; may be sparse or non-linear
+- `lastEvent` (QuestEvent): most recent event with `quest` id and `message[]`
+
+Key quests with special handling in the UI
+- Rebirth
+  - The quest spans most of the game and is not a reliable signal for “first rebirth is done”.
+  - Do not use `hero.version` for rebirth logic; that is a schema/data version.
+  - Recommended detection for first rebirth completion: `hero.levelCap > 10` (rebirth increases level cap above the initial 10).
+  - Before first rebirth and when at level cap, instruct players to complete rebirth from the Inventory tab (Quest items). Do not embed the rebirth widget on Welcome.
+
+- Washed Up
+  - Starts on first entry into water (movement triggered). Use `questLog.washedUp.started` to gate the initial swim hint.
+  - The “Next Steps” card may nudge “Maybe try going for a swim…” until this quest has started. Do not hide the card purely because Washed Up started; hide it after first rebirth completes.
+
+Sorting and display
+- See `src/game/quest-log/index.tsx` for sorting logic (unfinished before finished, then by progress).
+- Use `QuestDescription` query to fetch descriptions by quest id (generated hook `useQuestDescriptionQuery`).
+
+Onboarding integration (Welcome tab)
+- Show the Next Steps card until first rebirth completes (levelCap > 10).
+- Strike-through heuristics:
+  - Combat tip: after any EXP.
+  - Map tip: after first movement (tracked via localStorage) or when Washed Up started.
+  - Shop tip: when hero has any gold or any inventory.
+
+Common pitfalls
+- Using `hero.version` for gameplay detection — don’t. It reflects the data schema version, not quest/completion state.
+- Moving hooks below early returns in React components — declare hooks/effects before returns to satisfy Rules of Hooks.
+- Linking to Quests too early — prefer soft nudges until Washed Up starts, then rely on the Quest Log UI.
+

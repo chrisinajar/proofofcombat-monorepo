@@ -47,3 +47,8 @@ source: cursor-rule
 - Resource trading
 - Rare creature quest chain
 
+#### Graal the Unbroken
+- The Eternal Duelist; late‑game skill check
+- Unlocks after notable combat milestones (PvP or kills)
+- Daily duel at taverns via the Dueling Stone
+- Rewards: titles, cosmetic auras, trophy; loss grants temporary boon

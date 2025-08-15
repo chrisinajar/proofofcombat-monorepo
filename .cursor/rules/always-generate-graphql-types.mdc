@@ -9,5 +9,11 @@ globs: proofofcombat-server/schema/**/*, proofofcombat-ui/src/**/*.graphql
 - We never manually edit the `types/graphql.ts` file in the server
 - We never manually edit the `src/generated/graphql.tsx` file on the UI
 
-See the "Never use graphql tag in the UI project" rule for details on the UI's auto generated hooks.
+## Important: Do not change codegen configuration
+- Do not edit `codegen.yml` or environment variables to “make codegen work”. Use the existing `yarn generate` scripts as-is in each project:
+  - UI: `yarn --cwd proofofcombat-ui generate`
+  - Server: `yarn --cwd proofofcombat-server generate`
+- If codegen fails in a sandbox due to environment quirks (network, CPU detection, or sandboxed system calls), run the same `yarn generate` locally where it succeeds rather than changing repo config.
+- Never switch schema sources or hardcode endpoints in the repo when running codegen.
 
+See the "Never use graphql tag in the UI project" rule for details on the UI's auto generated hooks.

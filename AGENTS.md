@@ -22,6 +22,11 @@
 - Codegen (GraphQL): `yarn --cwd proofofcombat-server generate` and `yarn --cwd proofofcombat-ui generate` after schema or `.graphql` changes.
 - Tests: all `yarn test`; UI e2e `yarn --cwd proofofcombat-ui e2e` (run `yarn --cwd proofofcombat-ui playwright install` once).
 
+## Test Driven Bug Fixing
+ - When an issue is found, before fixing it, always create a failing unit test first
+ - Once a failing unit is created, fix the issue and then re-run the test to ensure that the fix worked
+ - Creating the test first makes it so that we're also ensuring that the unit test checks what we think it does
+
 ## Coding Style & Naming
 - 2-space indent, LF, UTF‑8 (`.editorconfig`). TypeScript throughout; prefer kebab-case filenames (e.g., `artifact-selection-box.tsx`).
 - Linting: server ESLint `@typescript-eslint`; UI `next/core-web-vitals`. Run `yarn --cwd <pkg> lint`.

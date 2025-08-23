@@ -1,0 +1,47 @@
+---
+description: Game time, timezones, and twilight rules
+globs: proofofcombat-server/constants/helpers.ts, proofofcombat-server/constants/index.ts, proofofcombat-server/constants/helpers.test.ts
+---
+# Day/Night Cycles & Timezones
+
+Use this when modifying game time behavior, timezone math, or twilight behavior in `proofofcombat-server/constants/helpers.ts`.
+
+Key Constants
+- DAY_NIGHT_CYCLE: Real-time duration for one in-game day/night cycle (4h in ms).
+- TIMEZONE_COUNT: Number of radial timezones (24); do not hard-code 24 elsewhere.
+- DAY_NIGHT_LENGTH: In-game day length (24h in ms).
+- TIMEZONE_OFFSET: In-game hour offset per timezone (1h in ms).
+- TWILIGHT_RADIUS: Fraction of radius designated as twilight around the map center.
+
+Orientation
+- Zone 0 aligns with the right (east) edge; indices increase counter-clockwise.
+- Top (north) edge corresponds to timezone 18; bottom to 6; left to 12.
+- Twilight covers the inner `TWILIGHT_RADIUS` fraction; twilight has offset 0.
+
+Implementation Rules
+- timestampLocationToGameTime:
+  - Compute base in-cycle time: `time = ((timestamp % DAY_NIGHT_CYCLE) / DAY_NIGHT_CYCLE) * DAY_NIGHT_LENGTH`.
+  - Add timezone offset: `gameTime = time + offset * TIMEZONE_OFFSET`.
+  - Wrap to in-day time: `adjustedTime = gameTime % DAY_NIGHT_LENGTH`.
+  - Return normalized fraction: `daytime = adjustedTime / DAY_NIGHT_LENGTH` (must be 0..1).
+- getTimezoneForLocation:
+  - If inside twilight, return `{ name: "Twilight", offset: 0 }`.
+  - Otherwise, derive angle from center and map to index with `TIMEZONE_COUNT`.
+- Do not use magic numbers; always reference `TIMEZONE_COUNT`.
+
+Testing Guidance
+- Edge mapping: Verify 0/6/12/18 on the cardinal edges; twilight at center.
+- Offset application: With `timestamp = 0`, `time` should equal `offset * 1h` and `daytime = offset/24`.
+- Wrap-around: Choose a timestamp such that `time + offset > 24h`; assert `daytime` equals the wrapped fraction (0..1).
+- Keep tests colocated in `proofofcombat-server/constants/helpers.test.ts`.
+
+Gotchas
+- Daytime normalization: Always compute from `adjustedTime`, not `gameTime`, to avoid values > 1.
+- Precision: Use `toBeCloseTo` for fractional assertions due to float rounding.
+- Orientation assumptions: Zone indices depend on angle normalization; confirm with angle tests if changing angle math.
+- Twilight threshold: `TWILIGHT_RADIUS` compares to percent-radius toward the edge; small changes affect many locations.
+
+After Changes
+- Run `yarn --cwd proofofcombat-server test`.
+- Run `yarn agent:runbook:sync` to update `.cursor/rules`.
+- Run `yarn agent:check` to verify no drift and guardrails.

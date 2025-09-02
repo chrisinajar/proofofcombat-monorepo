@@ -41,6 +41,7 @@ Meta / Shared
 - never-run-commands-in-the-root-directory: Never run commands in the root directory — Use to run commands within subprojects only.
 - project-description: Project overview, gameplay, and story — Use for high-level context and structure.
 - non-player-characters: A description of all non player characters — Use for lore and NPC references.
+- commit-sequencing: Create clean, multi-commit changes safely without empty commits — Use when preparing multiple commits locally.
 
 Maintenance
 - After adding or editing runbooks or this index, run `yarn agent:runbook:sync`.

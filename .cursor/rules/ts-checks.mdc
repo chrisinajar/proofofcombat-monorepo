@@ -1,0 +1,31 @@
+---
+description: Run and triage TypeScript checks reliably; handle noisy tests
+globs: proofofcombat-server/**, proofofcombat-ui/**
+---
+# TypeScript Checks
+
+Use this to run TS checks and get actionable error output.
+
+- Run in a package:
+  - Server: `yarn --cwd proofofcombat-server ts --pretty false`
+  - UI: `yarn --cwd proofofcombat-ui ts --pretty false`
+- Capture full output when the terminal truncates:
+  - `yarn --cwd proofofcombat-server ts --pretty false > proofofcombat-server/ts.out 2>&1 || true`
+  - Inspect: `sed -n '1,200p' proofofcombat-server/ts.out`
+
+## Noisy Tests
+
+Some TS test files may be intentionally loose or rely on ts-jest transformations that `tsc --noEmit` does not emulate.
+
+- Prefer excluding test files from `tsc` entirely using tsconfig `exclude`:
+  - For server: add to `proofofcombat-server/tsconfig.json`:
+    - `"exclude": ["**/*.test.ts", "**/*.test.tsx", "dist", "node_modules"]`
+- Keep jest/ts-jest configs unchanged; do not weaken project TS settings to “fix” tests.
+
+## Codegen Considerations
+
+- Run codegen before TS checks whenever schema or GraphQL ops change:
+  - Server: `yarn --cwd proofofcombat-server generate`
+  - UI: `yarn --cwd proofofcombat-ui generate`
+- If codegen fails due to sandbox CPU detection or environment quirks, rerun locally rather than editing repo config.
+

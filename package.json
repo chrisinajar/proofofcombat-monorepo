@@ -6,6 +6,7 @@
     "test": "jest",
     "agent:bootstrap": "nvm use 20.11.0 >/dev/null 2>&1 || true && yarn --cwd proofofcombat-server install && yarn --cwd proofofcombat-ui install && yarn --cwd proofofcombat-ui playwright install || true",
     "agent:runbook:new": "node scripts/agent-runbook-new.js",
+    "agent:ui:build:dual": "node scripts/ui-build-dual.js",
     "agent:runbook:sync": "node scripts/sync-runbooks-to-cursor.js",
     "agent:check": "node scripts/check-no-inline-gql.js && node scripts/sync-runbooks-to-cursor.js --verify && node scripts/check-codegen-drift.js",
     "agent:status": "node scripts/agent-status.js"

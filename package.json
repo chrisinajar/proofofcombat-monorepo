@@ -1,9 +1,15 @@
 {
   "scripts": {
-    "push-server": "git subtree push --prefix=proofofcombat-server server main",
-    "push-ui": "git subtree push --prefix=proofofcombat-ui ui main",
+    "push-server": "git subtree push --prefix=proofofcombat-server server $(git branch --show-current)",
+    "push-ui": "git subtree push --prefix=proofofcombat-ui ui $(git branch --show-current)",
     "push": "yarn push-server && yarn push-ui",
-    "test": "jest"
+    "test": "jest",
+    "agent:bootstrap": "nvm use 20.11.0 >/dev/null 2>&1 || true && yarn --cwd proofofcombat-server install && yarn --cwd proofofcombat-ui install && yarn --cwd proofofcombat-ui playwright install || true",
+    "agent:runbook:new": "node scripts/agent-runbook-new.js",
+    "agent:ui:build:dual": "node scripts/ui-build-dual.js",
+    "agent:runbook:sync": "node scripts/sync-runbooks-to-cursor.js",
+    "agent:check": "node scripts/check-no-inline-gql.js && node scripts/sync-runbooks-to-cursor.js --verify && node scripts/check-codegen-drift.js",
+    "agent:status": "node scripts/agent-status.js"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
   "devDependencies": {

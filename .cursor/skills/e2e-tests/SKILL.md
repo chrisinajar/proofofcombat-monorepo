@@ -1,14 +1,6 @@
 ---
-id: e2e-tests
-description: E2E tests rules and guidelines
-owner: ui
-triggers:
-  - proofofcombat-ui/e2e/**
-checklist:
-  - Use id/testid selectors
-  - Run individual tests
-  - Avoid increasing timeouts
-source: runbook
+name: e2e-tests
+description: "E2E tests rules and guidelines"
 ---
 The answer is never timeouts.
 

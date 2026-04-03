@@ -1,15 +1,6 @@
 ---
-id: finalizing-changes
-description: Finalizing changes
-owner: server, ui
-triggers:
-  - **/*
-checklist:
-  - Add unit tests for fragile code
-  - Remove unused code
-  - Consider a11y impacts
-  - Run all checks
-source: runbook
+name: finalizing-changes
+description: "Finalizing changes"
 ---
 # Finalizing changes
 Every time we implement a feature together we will always iterate back and forth and approach a final working solution. Once I am happy with the implementation, you should "finalize" the changes by following this proceedure and considering all of the following.

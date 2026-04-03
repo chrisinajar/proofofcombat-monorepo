@@ -1,14 +1,6 @@
 ---
-id: admin-folder
-description: Put all admin functionality in admin specific folders
-owner: server
-triggers:
-  - proofofcombat-server/schema/admin/**
-checklist:
-  - Place admin endpoints in schema/admin/
-  - Require @auth @admin decorators
-  - Treat testing/cheat tools as admin-only
-source: runbook
+name: admin-folder
+description: "Put all admin functionality in admin specific folders"
 ---
 There is some admin only functionality, since this is an online game. This can range from testing functionality to content moderation, but we want to keep it separated from any and all game logic.
 

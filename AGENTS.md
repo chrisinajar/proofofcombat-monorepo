@@ -1,12 +1,13 @@
 # Repository Guidelines
 
 ## Runbooks First
-- Always consult runbooks before making changes: open `docs/runbooks/` (authoritative) or `.cursor/rules/` (synced copies) and identify the 1–3 most relevant runbooks by topic or file globs.
+- **Source of truth:** `docs/runbooks/*.md`. **Generated for Cursor:** `.cursor/skills/<id>/SKILL.md` (do not edit by hand — run `yarn agent:runbook:sync` after changing runbooks).
+- Always consult runbooks before making changes: open `docs/runbooks/` or the synced skills under `.cursor/skills/`, and identify the 1–3 most relevant runbooks by topic, `triggers` globs in runbook frontmatter, area, or owner.
 - Start with the index: see `docs/runbooks/index.md` for a concise list of all runbooks with summaries and when to use them.
   - From the index, choose 1–3 runbooks whose globs/area/owner match your change.
 - During planning, add a step to consult runbooks and name which ones you used (by `id`/filename). If none apply, state that explicitly.
 - When answering or implementing, reference runbooks by `id` (e.g., `e2e-tests`, `graphql-change`) and follow their checklists. If a runbook contradicts a general guideline, prefer the runbook.
-- Keep runbooks in sync: run `yarn agent:runbook:sync` after editing or adding runbooks; run `yarn agent:check` to verify there’s no drift.
+- Keep runbooks in sync: run `yarn agent:runbook:sync` after editing or adding runbooks (updates `.cursor/skills/`); run `yarn agent:check` to verify there’s no drift.
 - When you discover a new repeatable workflow or gotcha, create or update a runbook with `yarn agent:runbook:new <id> "Title"`, then sync.
 
 
@@ -63,9 +64,9 @@
 
 ## Agent Quickstart
 - `yarn agent:bootstrap`: install deps for server and UI; install Playwright.
-- `yarn agent:status`: show environment, install status, and runbook drift.
-- `yarn agent:runbook:sync`: sync `docs/runbooks` to `.cursor/rules`.
+- `yarn agent:status`: show environment, install status, and runbook ↔ skills sync drift.
+- `yarn agent:runbook:sync`: sync `docs/runbooks` to `.cursor/skills` (Agent Skills).
 - `yarn agent:runbook:new <id> "Title"`: scaffold a new runbook.
-- `yarn agent:check`: guardrails (no inline gql), runbook drift check, codegen drift.
+- `yarn agent:check`: guardrails (no inline gql), runbook ↔ skills drift check, codegen drift.
 
-Runbooks live in `docs/runbooks/` with YAML frontmatter. Update runbooks whenever you discover a gotcha; then run `yarn agent:runbook:sync` to keep `.cursor/rules` aligned.
+Runbooks live in `docs/runbooks/` with YAML frontmatter (`id`, `description`, `triggers`, etc.). The old workflow synced copies into **`.cursor/rules/*.mdc`**; that is **replaced** by Agent Skills under **`.cursor/skills/`**. Update runbooks whenever you discover a gotcha; then run `yarn agent:runbook:sync` to regenerate skills and avoid drift.

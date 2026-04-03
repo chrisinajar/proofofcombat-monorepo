@@ -1,16 +1,7 @@
 ---
-id: runbook-index
-description: Index of runbooks with one-line summaries and when to use them
-owner: server, ui
-triggers:
-  - docs/runbooks/**
-checklist:
-  - Consult index before selecting runbooks
-  - Use the 1–3 most relevant runbooks
-  - Run `yarn agent:runbook:sync` after edits
-source: runbook
+name: runbook-index
+description: "Index of runbooks with one-line summaries and when to use them"
 ---
-
 # Runbook Index
 
 **Pipeline:** Edit markdown here (`docs/runbooks/`). Run `yarn agent:runbook:sync` to regenerate **Agent Skills** under `.cursor/skills/<id>/SKILL.md`. Do not hand-edit `SKILL.md` files — they are generated and checked in CI (`agent:check`).

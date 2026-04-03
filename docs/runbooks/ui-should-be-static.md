@@ -7,7 +7,7 @@ triggers:
 checklist:
   - Avoid SSR-only APIs
   - Validate static export
-source: cursor-rule
+source: runbook
 ---
 Short rule: UI must remain static-exportable (no SSR). `yarn --cwd proofofcombat-ui build` creates static `out/`.
 

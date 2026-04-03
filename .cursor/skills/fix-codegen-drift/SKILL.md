@@ -1,0 +1,15 @@
+---
+name: fix-codegen-drift
+description: "Resolve generated types drift between schema and committed files"
+---
+Summary: Fix CI failures caused by outdated generated artifacts.
+
+Steps:
+1) Run `yarn --cwd proofofcombat-server generate && yarn --cwd proofofcombat-ui generate`.
+2) Inspect `proofofcombat-server/types/graphql.ts` and `proofofcombat-ui/src/generated/graphql.tsx` changes.
+3) Commit generated changes with a clear message.
+4) Run `yarn test` and UI `yarn --cwd proofofcombat-ui build`.
+
+Gotchas:
+- Never manually edit generated files.
+

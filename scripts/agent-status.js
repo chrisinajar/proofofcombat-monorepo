@@ -20,5 +20,5 @@ console.log('- ui hooks   :', safe('test -f proofofcombat-ui/src/generated/graph
 
 console.log('\nRunbooks:');
 console.log('- count:', safe("ls -1 docs/runbooks/*.md 2>/dev/null | wc -l"));
-console.log('- cursor rules drift check:', safe('node scripts/sync-runbooks-to-cursor.js --verify && echo ok || echo drift'));
+console.log('- skills drift check:', safe('node scripts/sync-runbooks-to-skills.js --verify && echo ok || echo drift'));
 

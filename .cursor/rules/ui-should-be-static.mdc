@@ -1,6 +1,0 @@
----
-description: UI must remain static-exportable
-globs: proofofcombat-ui/**/*
----
-Short rule: UI must remain static-exportable (no SSR). `yarn --cwd proofofcombat-ui build` creates static `out/`.
-

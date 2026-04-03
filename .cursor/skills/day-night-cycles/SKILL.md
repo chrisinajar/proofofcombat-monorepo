@@ -1,20 +1,7 @@
 ---
-id: day-night-cycles
-description: Game time, timezones, and twilight rules
-owner: server
-triggers:
-  - proofofcombat-server/constants/helpers.ts
-  - proofofcombat-server/constants/index.ts
-  - proofofcombat-server/constants/helpers.test.ts
-checklist:
-  - Understand constants and orientation
-  - Normalize daytime using adjusted time
-  - Use TIMEZONE_COUNT (no hard-coded 24)
-  - Cover wrap-around in tests
-  - Sync runbooks (`yarn agent:runbook:sync`)
-source: runbook
+name: day-night-cycles
+description: "Game time, timezones, and twilight rules"
 ---
-
 # Day/Night Cycles & Timezones
 
 Use this when modifying game time behavior, timezone math, or twilight behavior in `proofofcombat-server/constants/helpers.ts`.

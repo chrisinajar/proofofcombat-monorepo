@@ -7,7 +7,7 @@ triggers:
 checklist:
   - Prefer yarn commands
   - Avoid npm in this repo
-source: cursor-rule
+source: runbook
 ---
 Use Yarn Classic across the repo. Example commands are provided in runbooks and AGENTS.md.
 

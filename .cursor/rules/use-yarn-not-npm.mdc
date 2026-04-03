@@ -1,6 +1,0 @@
----
-description: Use Yarn (Classic) not npm
-globs: **/*
----
-Use Yarn Classic across the repo. Example commands are provided in runbooks and AGENTS.md.
-

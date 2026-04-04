@@ -22,7 +22,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
-| [ ] | Remove **unused imports** (`calculate-damage.ts`: `EnchantmentType`, unused `getItemPassiveUpgradeTier`; `calculate-enchantment-damage.ts`: `AttackType`, `EnchantmentType`, `HeroClasses`, `attributesForAttack`; `fight.ts`: `EnchantmentType`; `monster.ts`: `CombatEntry`). | safe | Listed in [combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md). |
+| [x] | Remove **unused imports** (`calculate-damage.ts`: `EnchantmentType`, unused `getItemPassiveUpgradeTier`; `calculate-enchantment-damage.ts`: `AttackType`, `EnchantmentType`, `HeroClasses`, `attributesForAttack`; `fight.ts`: `EnchantmentType`; `monster.ts`: `CombatEntry`). | safe | Listed in [combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md). |
 | [ ] | Remove or use **dead locals** in `calculate-damage.ts` (`damage`, `baseDamageDecrease`; confirm whether `attackerDamageStat` / `victimReductionStat` are truly obsolete). | safe | Same file. |
 | [ ] | **Deduplicate `getItemPassiveUpgradeTier`** — single implementation (e.g. `item-helpers.ts`), delete duplicate in `helpers.ts`, fix imports. | verify | `calculations/units/unit.ts` imports `combat/item-helpers`. |
 | [ ] | Delete or repurpose **`createMonsterLuck`** in `monster.ts` (never called; live path uses `createLuck`). | verify | Remove dead curve or wire it if balance intent returns. |

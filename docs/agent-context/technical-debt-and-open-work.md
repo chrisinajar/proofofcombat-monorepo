@@ -4,6 +4,8 @@ This is a **point-in-time** inventory derived from **code search and spot reads*
 
 **Deeper pass (quests, stubs, fallthrough NPC errors, combat leftovers):** see **[rough-edges-and-incomplete-work.md](./rough-edges-and-incomplete-work.md)** — that file is the home for “why does this feel unfinished?” glue; this file stays a lighter TODO index.
 
+**Actionable checklist (checkboxes, grouped by area):** **[cleanup-todo-list.md](./cleanup-todo-list.md)** — use it to drive refactors; keep it in sync as items close.
+
 ## Explicit TODO / FIXME comments (server sample)
 
 | Location | Signal |

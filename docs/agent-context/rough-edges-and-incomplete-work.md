@@ -2,6 +2,8 @@
 
 Purpose: **contextual glue** — where the surprising bits live, not a line-by-line reading of self-explanatory code. Use this when something “should” work but feels stubby, or when enums and UX disagree.
 
+For a **single checklist** you can tick off while cleaning, see **[cleanup-todo-list.md](./cleanup-todo-list.md)** (aggregates this file, combat-runtime notes, and scans).
+
 ---
 
 ## Quests: schema vs copy vs wiring

@@ -46,7 +46,7 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 **Behavior notes:**
 
 - **`attacker.class` / `attackerInput.health`** for Blood use **`Combatant`**, not only `unit` — correct for **current health** on the snapshot.
-- Third crit tier: computed internally; **`trippleCritical` not returned** from `calculateDamage` (see rough-edges doc). Typo **`tripple`** is consistent in identifiers.
+- Third crit tier: extra `damage *= 3` roll using **`trippleCriticalChance`** (Gambler/Daredevil); no separate boolean is tracked or returned—only **`critical`** / **`doubleCritical`** are part of the `calculateDamage` result. Typo **`tripple`** is consistent in identifiers.
 
 **Resistance indexing:** uses `` `${damageType.toLowerCase()}Resistance` `` — must stay aligned with `Unit` stat names (e.g. `physicalResistance`).
 

@@ -75,7 +75,7 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 ## `fight.ts`
 
 - **`EnchantmentType` import** — **unused**.
-- Local type **`AttackCombcatantResult`** — typo **“Combcatant”**; only used inside this file.
+- Local type **`AttackCombatantResult`** — return shape of `attackCombatant`; only used inside this file.
 
 ---
 

@@ -4,6 +4,6 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 
 | Date | One-line finding | Suggested file(s) | Notes |
 |------|------------------|-------------------|-------|
-| _(none yet)_ | | | |
+| 2026-04-04 | Stale audit: `fight.ts` section still claims unused `EnchantmentType` import; verify against current `combat/fight.ts`. | docs/agent-context/combat-runtime-and-consumption.md | |
 
 Periodically, promote rows into [cleanup-todo-list.md](./cleanup-todo-list.md) or drop them if obsolete.

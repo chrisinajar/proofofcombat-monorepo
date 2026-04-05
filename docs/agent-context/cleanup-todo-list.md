@@ -1,6 +1,6 @@
 # Cleanup backlog: dead, incomplete, or should-be-dead paths
 
-Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especially [rough-edges-and-incomplete-work.md](./rough-edges-and-incomplete-work.md) and [combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md)) plus targeted repo scans. Items are **not** ordered by priority unless noted — validate with tests (`yarn test`) before removing behavior. **Spelling of identifiers** in a row (e.g. `trippleCritical`, `AttackCombcatantResult`) matches the repo **as of the last refresh**; rename/fix rows call that out explicitly.
+Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especially [rough-edges-and-incomplete-work.md](./rough-edges-and-incomplete-work.md) and [combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md)) plus targeted repo scans. Items are **not** ordered by priority unless noted — validate with tests (`yarn test`) before removing behavior. **Spelling of identifiers** in a row (e.g. `trippleCritical`) matches the repo **as of the last refresh**; rename/fix rows call that out explicitly.
 
 **How to use:** Check boxes when done; add a short note or PR link in a trailing column if you keep this file updated. Re-scan periodically (`grep TODO`, `grep FIXME`, commented `// return` / `// if`).
 
@@ -27,7 +27,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [x] | **Deduplicate `getItemPassiveUpgradeTier`** — single implementation (e.g. `item-helpers.ts`), delete duplicate in `helpers.ts`, fix imports. | verify | `calculations/units/unit.ts` imports `combat/item-helpers`. |
 | [x] | Delete or repurpose **`createMonsterLuck`** in `monster.ts` (never called; live path uses `createLuck`). | verify | Remove dead curve or wire it if balance intent returns. |
 | [x] | **`EnchantmentActivationOrder`** in `enchantment-order.ts` — unused anywhere; remove export or implement ordering. | verify | Only defined in `enchantment-order.ts` + docs; grep confirms no consumers. |
-| [ ] | Fix typo **`AttackCombcatantResult`** → `AttackCombatantResult` in `fight.ts` (or inline type). | safe | |
+| [x] | Fix typo **`AttackCombcatantResult`** → `AttackCombatantResult` in `fight.ts` (or inline type). | safe | |
 | [ ] | **`isSecondAttack`** passed into `calculateOdds` / `calculateHit` but **not used** inside `calculateOdds` (hit chance ignores off-hand); either document as intentional API stability or stop threading it through hit path. Damage path still uses it via `getBaseDamage`. | product | See `combat/calculate-hit.ts`. |
 | [ ] | Reduce **triple `getEnchantedAttributes` / `enterCombat` per weapon swing** (hit + two damage paths) — perf/correctness surface; needs careful test pass. | product | [combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md). |
 | [ ] | Expose or drop **`trippleCritical`** from `calculateDamage` return + `attackCombatant` if UI/debug needs third tier. | product | Currently computed, not surfaced. |

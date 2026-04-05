@@ -28,7 +28,7 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 
 ## Bridge: `getEnchantedAttributes` / `enchantCombatants` (`combat/enchantments.ts`)
 
-- **`enterCombat` runs once per `getEnchantedAttributes` call** (per pair). Inside one **weapon swing**, **`calculateHit`** calls it once and **`calculateDamage`** calls it **twice** (`calculateDamageValues` + body of `calculateDamage`). So **`enterCombat` can run three times per hit** (hit + two damage paths). Stat-steal side is partially guarded (`StatStealVictimModifier` removes an existing victim mod before re-adding — see `calculations/modifiers/stat-steal-modifier.ts`); **`applyAttackModifiers` / counterspells still re-run**. This is **perf + correctness** surface area, not documented in-file.
+- **`enterCombat` runs once per `getEnchantedAttributes` call** (per pair). Inside one **weapon swing**, **`calculateHit`** calls it once and **`calculateDamage`** calls it **once** (shared between `calculateDamageValues` and the rest of `calculateDamage`). So **`enterCombat` can run twice per hit** (hit + damage). Stat-steal side is partially guarded (`StatStealVictimModifier` removes an existing victim mod before re-adding — see `calculations/modifiers/stat-steal-modifier.ts`); **`applyAttackModifiers` / counterspells still re-run** on each `enterCombat`. Further merging hit + damage into a single `getEnchantedAttributes` would need API threading and broader tests.
 
 - **`attacker`’s `attackType` in `enchantCombatants`** is read only to satisfy typing; flattening does not depend on it for the victim’s copy.
 

@@ -54,7 +54,7 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 
 ## `calculate-hit.ts`
 
-- **`isSecondAttack` parameter** on `calculateOdds` / `calculateHit` is **unused** inside those functions (only passed through to **`getEnchantedAttributes`**, which also **does not use it**). Hit chance uses **`unit.stats.attackRating` / `evasionRating`**, which already encode class quirks; **second weapon does not change hit** via this parameter.
+- Hit chance uses **`unit.stats.attackRating` / `evasionRating`** only; **main vs off-hand** is not a separate axis here (off-hand still affects **damage** via `isSecondAttack` on the **`calculateDamage`** path in `fight.ts`).
 
 ---
 

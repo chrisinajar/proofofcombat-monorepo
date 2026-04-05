@@ -65,7 +65,7 @@ These strings are mostly **fallbacks when `tradeId` does not match a known branc
 
 ## Combat pipeline: subtle leftovers
 
-**Details (imports, dead locals, `Combatant` fields, `EnchantmentActivationOrder`, duplicate helpers):** see **[combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md)** — that file is the full audit of the **`combat/`** layer only.
+**Details (imports, dead locals, `Combatant` fields, duplicate helpers):** see **[combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md)** — that file is the full audit of the **`combat/`** layer only.
 
 **Summary:** third crit tier affects damage but is not returned to `attackCombatant`; **`getEnchantedAttributes` / `enterCombat`** can run **three times per hit** (hit + two damage paths).
 

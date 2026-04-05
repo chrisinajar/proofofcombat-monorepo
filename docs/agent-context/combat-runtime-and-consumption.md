@@ -89,7 +89,6 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 ## `enchantment-order.ts`
 
 - **`EnchantmentCounterSpellOrder`** — **used** by `calculations/modifiers/enchantments.ts` (counterspell ordering).
-- **`EnchantmentActivationOrder`** — **exported from `combat/index.ts` but never imported** anywhere else in the repo. **Dead list** unless referenced from an external package or dynamic require (none found). Safe to treat as **abandoned ordering experiment**.
 
 ---
 
@@ -123,5 +122,5 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 | `calculate-*.ts` | Yes | Core math. |
 | `fight.ts` | Yes | Scheduling + mesmerize + logging; unused `EnchantmentType` import. |
 | `fight-monster.ts` / `fight-hero.ts` | Yes | Thin wrappers over `executeFight`. |
-| `enchantment-order.ts` | No | One array dead, one used from calculations. |
+| `enchantment-order.ts` | No | Counterspell order only (`EnchantmentCounterSpellOrder`). |
 | `enchantment-groups.ts` | No | Expanded enchant lists for modifier layer. |

@@ -67,8 +67,7 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 
 ## `monster.ts`
 
-- **`createMonsterLuck`** — **defined but never called**; monsters use **`createLuck(monsterAttributes.luck)`** (same helper as heroes, driven off rolled stats). The HP-based `createMonsterLuck` curve is **dead**.
-- **`CombatEntry` import** — **unused** (likely copy-paste).
+- Luck uses **`createLuck(monsterAttributes.luck)`** (same helper as heroes; values come from **`createMonsterStatsByLevel`**).
 - Author comment on **`...combatData` spread**: acknowledges redundancy.
 
 ---
@@ -119,7 +118,7 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 | `constants.ts` | No | `attributesForAttack` mapping only. |
 | `helpers.ts` | Via DB for luck | `createLuck`; duplicate `getItemPassiveUpgradeTier`. |
 | `hero.ts` | Yes | Builds `Combatant` + equipment mirror for UI/two-weapon logic; seeds **base** attributes. |
-| `monster.ts` | Yes | Builds mob `Unit`; dead `createMonsterLuck`. |
+| `monster.ts` | Yes | Builds mob `Unit`. |
 | `enchantments.ts` | Yes | **Only** place that flattens `unit.stats` onto combatant-shaped objects for combat. |
 | `calculate-*.ts` | Yes | Core math. |
 | `fight.ts` | Yes | Scheduling + mesmerize + logging; unused `EnchantmentType` import. |

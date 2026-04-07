@@ -21,8 +21,7 @@ Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is 
 | ~~`damageReduction: number`~~ (removed) | Was **never read** in combat math | **Deleted** from `Combatant`; use **`unit.stats`** for reduction-related stats. |
 | `attributes` (initial) | **Overwritten** in `enchantCombatants` | Heroes seed from **`heroUnit.baseValues`** in `createHeroCombatant`, not full modified stats — **misleading** until `getEnchantedAttributes` runs. |
 | `skills?` | **Not read** in `combat/` | Only populated on heroes; skills affect stats via **`BasicHeroModifier` on the unit**, not via this field. |
-| `EnchantedCombatant.enchanted: true` | **Never set** | Type is satisfied only by **cast** in `enchantments.ts`; the tag is **nominal only**. |
-| Flattened fields on `EnchantedCombatant` (`bonusAccuracy`, `bonusDodge`, `bonusWeaponTiers`, `lifesteal`, etc.) | **Copied in `enchantCombatants`** | **No reads** in `combat/*.ts` after flattening — hit/damage use **`unit.stats`**. These exist for **callers outside combat** (or future use); **`schema/hero/resolvers.ts` combatStats** mostly uses **`unit.stats`** and `percentageDamageIncrease`, not these flats. |
+| `EnchantedCombatant` | **Alias of `Combatant`** | Modifier stats (**`percentageDamageIncrease`**, mesmerize/focus, bonus tiers, etc.) live only on **`unit.stats`**. `enchantCombatants` syncs **`attributes`** from **`unit.stats`**; it no longer copies parallel flat fields. **`Hero.combatStats`** reads amplification/reduction from **`unit.stats`**. |
 
 ---
 

@@ -32,7 +32,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [x] | Reduce **triple `getEnchantedAttributes` / `enterCombat` per weapon swing** (hit + two damage paths) — perf/correctness surface; needs careful test pass. | product | [combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md). |
 | [x] | Expose or drop **`trippleCritical`** from `calculateDamage` return + `attackCombatant` if UI/debug needs third tier. | product | Dropped unused local flag; third tier still applies to damage. Exposing a flag would need schema/product if the log should distinguish tiers. |
 | [x] | Reconcile **`Combatant.damageReduction` flat field** vs **`attributes`** — flat value set on hero/monster, combat reads `attributes` path; consider removing flat field or wiring it. | verify | Removed vestigial flat field; combat already used `unit.stats` only. [combat-runtime-and-consumption.md](./combat-runtime-and-consumption.md). |
-| [ ] | Audit **flattened `EnchantedCombatant` fields** (bonusAccuracy, lifesteal, …) — copied in `enchantCombatants`, minimal reads in `combat/`; confirm GraphQL/resolvers still need or trim. | verify | |
+| [x] | Audit **flattened `EnchantedCombatant` fields** (bonusAccuracy, lifesteal, …) — copied in `enchantCombatants`, minimal reads in `combat/`; confirm GraphQL/resolvers still need or trim. | verify | Removed duplicate flats; `EnchantedCombatant` is `Combatant`; reads use `unit.stats` (incl. `schema/hero/resolvers.ts` combatStats). |
 | [ ] | **`combat.test.ts` `getAverageDamage`** — doc that approximation ≠ nested crit ladder, or tighten test helper. | product | |
 
 ---

@@ -10,7 +10,7 @@ Agents already read source well — this file only records **non-obvious drift**
 
 For **hit chance**, **weapon damage**, **armor**, **resists**, **amplification**, **crit luck**, combat reads **`attacker.unit` / `victim.unit`** (via `getEnchantedAttributes` → `unit.stats` / `getBaseDamage`), **not** the loose fields on `Combatant` except where noted below.
 
-Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initial `attributes`) is often a **legacy snapshot** or **test plumbing**.
+Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is often a **legacy snapshot** or **test plumbing**. The old flat **`damageReduction`** number was **removed** from `Combatant` — mitigation uses **`unit.stats`** (e.g. `percentageDamageReduction`, armor), not a parallel field.
 
 ---
 
@@ -18,7 +18,7 @@ Anything on **`Combatant`** that duplicates that (e.g. `damageReduction`, initia
 
 | Field | Role in combat code | Notes |
 |-------|---------------------|--------|
-| `damageReduction: number` | **Not read** anywhere under `combat/` | Still set in `hero.ts` (`hero.level`) and `monster.ts` (`constitution/2`). Tests pass a number. **Treat as vestigial** unless something outside `combat/` reads `Combatant` directly. |
+| ~~`damageReduction: number`~~ (removed) | Was **never read** in combat math | **Deleted** from `Combatant`; use **`unit.stats`** for reduction-related stats. |
 | `attributes` (initial) | **Overwritten** in `enchantCombatants` | Heroes seed from **`heroUnit.baseValues`** in `createHeroCombatant`, not full modified stats — **misleading** until `getEnchantedAttributes` runs. |
 | `skills?` | **Not read** in `combat/` | Only populated on heroes; skills affect stats via **`BasicHeroModifier` on the unit**, not via this field. |
 | `EnchantedCombatant.enchanted: true` | **Never set** | Type is satisfied only by **cast** in `enchantments.ts`; the tag is **nominal only**. |

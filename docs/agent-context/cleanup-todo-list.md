@@ -63,7 +63,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [x] | **Water terrain drops** — implement or delete commented branch (`schema/monster/resolvers.ts`). | product | Deleted bare `// if (location.terrain === "water") {` stub (no body/logic); water combat already works via `challenges` query; terrain-specific drops can be added fresh if needed. |
 | [x] | **Monk class** — implement `HeroClasses.Monk` or remove commented branch (`db/models/hero/classes.ts`). | product | Removed dead commented branch; unarmed heroes already fall through to Adventurer. `Monk` enum stays in schema (removing it would be a breaking change). Added co-located test coverage for `getBaseClass`/`getClass`. |
 | [x] | **Aqua lung** — commented branch for magic bubble drop (`schema/quests/aqua-lung.ts`). | verify | No commented branch present; removed unused imports (`InventoryItem`, `HeroClasses`). File is clean. |
-| [ ] | **`schema/items/resolvers.ts`** — remove unused **`getEnchantedAttributes`** import if still unused. | safe | Re-grep before edit. |
+| [x] | **`schema/items/resolvers.ts`** — remove unused **`getEnchantedAttributes`** import if still unused. | safe | Removed; confirmed unused by grep + tsc. |
 
 ---
 

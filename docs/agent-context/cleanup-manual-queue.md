@@ -7,6 +7,7 @@ Items **moved here** when an automated pass could not complete them safely. Each
 | Date moved | Source (section + summary) | Files / symbols | Why it was deferred (be specific) | Resolved |
 |------------|-----------------------------|-----------------|-----------------------------------|----------|
 | 2026-04-08 | B. Units — Split or index `calculations/modifiers/enchantments.ts` (size/maintainability) | `proofofcombat-server/calculations/modifiers/enchantments.ts` (1286 lines) | Tagged **product**. The item itself says "when behavior stabilizes" — timing is a judgment call. No specification of target module boundaries (by category? enchantment type? phase?). Splitting a 1286-line file without a clear design would be guesswork. Needs a human decision on grouping before an agent can execute safely. | |
+| 2026-04-08 | C. Schema — `talk` mutation: add player-facing text / onboarding | `proofofcombat-server/schema/quests/resolvers.ts` (lines 32-39, `talk` mutation TODO comment); `proofofcombat-server/schema/quests/text/bartender-advice.ts` | Tagged **product**. The `talk` mutation already works (tavern lookup → quest gate → bartender advice → gossip/treasure-map roll). The TODO is aspirational brainstorming: "add text to help players", "maybe convert 'appear here' quest events to bartender conversations". Deciding what onboarding text to add, which quest triggers to reroute, and writing flavor copy are gameplay/design decisions. No specification of target content or flow. | |
 
 ---
 

@@ -7,5 +7,7 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 | 2026-04-04 | Stale audit: `fight.ts` section still claims unused `EnchantmentType` import; verify against current `combat/fight.ts`. | docs/agent-context/combat-runtime-and-consumption.md | |
 | 2026-04-04 | `getEnchantedAttributes` import in `schema/items/resolvers.ts` still appears unused (re-grep before removing). | proofofcombat-server/schema/items/resolvers.ts | See cleanup-todo C unused-import row. |
 | 2026-04-08 | Unused type imports `InventoryItem`, `MonsterInstance`, `Quest` in `treasure.ts` (pre-existing, not from gossip cleanup). | proofofcombat-server/schema/quests/treasure.ts | Safe to remove; vestiges of aspirational TODO. |
+| 2026-04-08 | Unused imports `EnchantmentType`, `InventoryItem` in `meet-the-queen.ts`. | proofofcombat-server/schema/quests/meet-the-queen.ts | Safe to remove; neither type is referenced in the file body. |
+| 2026-04-08 | Dev `console.log("checking skip drop!")` in `meet-the-queen.ts` line 34 (`checkSkipDrop`). | proofofcombat-server/schema/quests/meet-the-queen.ts | Low-priority; remove or gate behind debug flag. |
 
 Periodically, promote rows into [cleanup-todo-list.md](./cleanup-todo-list.md) or drop them if obsolete.

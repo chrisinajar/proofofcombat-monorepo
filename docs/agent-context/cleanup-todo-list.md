@@ -57,7 +57,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [→ manual 2026-04-08] | **Meet the Queen** — prerequisite / Droop ordering (`meet-the-queen.ts`). | product | |
 | [x] | **`resetVoid` cataclysm** — hook or remove TODO (`void-travel.ts`). | product | Removed undesigned TODO; fixed "catacalism" typo; void reset is self-contained. |
 | [x] | **Washed up** — remove or gate **`// return hero;`** debug line (`washed-up.ts`). | safe | Removed commented-out early return in `checkInitialWashedUp`. |
-| [ ] | **Droop** — delete dead **`// const secret`** scaffolding (`droop.ts`). | safe | |
+| [x] | **Droop** — delete dead **`// const secret`** scaffolding (`droop.ts`). | safe | Removed two dead comment stubs (`// const secret`, `// const eastWest =`); live variables defined earlier in function. |
 | [ ] | **Aberration void reward** — commented cracked-orb → full-orb path; decide story + remove placeholder comment (`aberration-drops.ts`). | product | |
 | [ ] | **Staff of teleportation** — `checkTeleport` always `false`; implement quest lock or delete hook (`staff-of-teleportation.ts`, callers in `schema/locations/resolvers.ts`). | product | |
 | [ ] | **Water terrain drops** — implement or delete commented branch (`schema/monster/resolvers.ts`). | product | |

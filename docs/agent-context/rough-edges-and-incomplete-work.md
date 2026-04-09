@@ -77,9 +77,9 @@ These strings are mostly **fallbacks when `tradeId` does not match a known branc
 
 - `proofofcombat-server/db/models/hero/classes.ts` — “no monks yet” with **`// return HeroClasses.Monk;`** commented under unarmed branch. **Unarmed** heroes fall through to other rules; no `Monk` class in live selection.
 
-**Water terrain drop branch**
+**Water terrain drop branch** — resolved
 
-- `proofofcombat-server/schema/monster/resolvers.ts` — **`// if (location.terrain === "water") {`** left next to victory/drop logic. **Water-specific drop behavior is not active** (comment only).
+- `proofofcombat-server/schema/monster/resolvers.ts` — dead `// if (location.terrain === "water") {` stub removed; no logic existed. Water monsters are served by the `challenges` query; terrain-specific drop bonuses can be added fresh (see `forbidden` terrain pattern at ~line 305).
 
 **Staff of teleportation hook**
 

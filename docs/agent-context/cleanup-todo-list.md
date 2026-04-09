@@ -60,7 +60,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [x] | **Droop** — delete dead **`// const secret`** scaffolding (`droop.ts`). | safe | Removed two dead comment stubs (`// const secret`, `// const eastWest =`); live variables defined earlier in function. |
 | [x] | **Aberration void reward** — commented cracked-orb → full-orb path; decide story + remove placeholder comment (`aberration-drops.ts`). | product | Story already implemented: essence-of-void + cracked-orb → orb-of-forbidden-power via Amixea (rebirth.ts). Removed superseded alt-design comments, dead `rebirth` import, and "lolololol" placeholder; added cross-ref comment. |
 | [→ manual 2026-04-08] | **Staff of teleportation** — `checkTeleport` always `false`; implement quest lock or delete hook (`staff-of-teleportation.ts`, callers in `schema/locations/resolvers.ts`). | product | |
-| [ ] | **Water terrain drops** — implement or delete commented branch (`schema/monster/resolvers.ts`). | product | |
+| [x] | **Water terrain drops** — implement or delete commented branch (`schema/monster/resolvers.ts`). | product | Deleted bare `// if (location.terrain === "water") {` stub (no body/logic); water combat already works via `challenges` query; terrain-specific drops can be added fresh if needed. |
 | [ ] | **Monk class** — implement `HeroClasses.Monk` or remove commented branch (`db/models/hero/classes.ts`). | product | |
 | [ ] | **Aqua lung** — commented branch for magic bubble drop (`schema/quests/aqua-lung.ts`). | verify | |
 | [ ] | **`schema/items/resolvers.ts`** — remove unused **`getEnchantedAttributes`** import if still unused. | safe | Re-grep before edit. |

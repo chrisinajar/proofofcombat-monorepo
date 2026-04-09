@@ -42,7 +42,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
 | [x] | **`rangedSecondAttackChance`** on `Unit` base — comment says unused for combat; grep full repo, then remove or formalize. | verify | `calculations/units/unit.ts`. Removed: no code read or set this field; only defined in baseValues. |
-| [ ] | **`calculations/units/mob.ts`** commented `damageReduction` — align with monster combatant or delete hint. | safe | |
+| [x] | **`calculations/units/mob.ts`** commented `damageReduction` — align with monster combatant or delete hint. | safe | Deleted both commented blocks (old combatant shape + sample equipment); flat `damageReduction` already removed from `Combatant`. |
 | [ ] | Split or index **`calculations/modifiers/enchantments.ts`** when behavior stabilizes (size / maintainability). | product | [technical-debt-and-open-work.md](./technical-debt-and-open-work.md). |
 | [ ] | Review **`stat-steal-modifier.ts`** commented alternate formula. | product | May be intentional scratch work. |
 

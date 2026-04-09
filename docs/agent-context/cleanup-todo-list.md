@@ -103,7 +103,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
-| [ ] | Replace **`(item as any).baseDamage` / `baseArmor`** in inventory UI with proper GraphQL types or narrowed helpers (`inventory-browser.tsx`, `equipment-slot.tsx`). | verify | [technical-debt-and-open-work.md](./technical-debt-and-open-work.md). |
+| [x] | Replace **`(item as any).baseDamage` / `baseArmor`** in inventory UI with proper GraphQL types or narrowed helpers (`inventory-browser.tsx`, `equipment-slot.tsx`). | verify | Generated `InventoryItem` type already includes `baseDamage`/`baseArmor`; removed 6 `as any` casts, using typed fields with `??` fallback to local computation. |
 
 ---
 

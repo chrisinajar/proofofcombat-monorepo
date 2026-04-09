@@ -10,5 +10,7 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 | 2026-04-08 | Unused imports `EnchantmentType`, `InventoryItem` in `meet-the-queen.ts`. | proofofcombat-server/schema/quests/meet-the-queen.ts | Safe to remove; neither type is referenced in the file body. |
 | 2026-04-08 | Dev `console.log("checking skip drop!")` in `meet-the-queen.ts` line 34 (`checkSkipDrop`). | proofofcombat-server/schema/quests/meet-the-queen.ts | Low-priority; remove or gate behind debug flag. |
 | 2026-04-08 | Dev `console.log` calls in `washed-up.ts` lines 100, 179, 236 (pub, dock, initial). | proofofcombat-server/schema/quests/washed-up.ts | Remove or gate behind debug flag; not part of the `// return hero;` cleanup row. |
+| 2026-04-08 | Placeholder comment `// asdf asdf` in `movingMountainReward`. | proofofcombat-server/schema/monster/aberration-drops.ts (line ~86) | Safe to remove; meaningless dev note. |
+| 2026-04-08 | Unused import `randomEnchantment` in `aberration-drops.ts`. | proofofcombat-server/schema/monster/aberration-drops.ts | Safe to remove; not referenced anywhere in the file body. |
 
 Periodically, promote rows into [cleanup-todo-list.md](./cleanup-todo-list.md) or drop them if obsolete.

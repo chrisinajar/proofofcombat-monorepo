@@ -58,7 +58,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [x] | **`resetVoid` cataclysm** — hook or remove TODO (`void-travel.ts`). | product | Removed undesigned TODO; fixed "catacalism" typo; void reset is self-contained. |
 | [x] | **Washed up** — remove or gate **`// return hero;`** debug line (`washed-up.ts`). | safe | Removed commented-out early return in `checkInitialWashedUp`. |
 | [x] | **Droop** — delete dead **`// const secret`** scaffolding (`droop.ts`). | safe | Removed two dead comment stubs (`// const secret`, `// const eastWest =`); live variables defined earlier in function. |
-| [ ] | **Aberration void reward** — commented cracked-orb → full-orb path; decide story + remove placeholder comment (`aberration-drops.ts`). | product | |
+| [x] | **Aberration void reward** — commented cracked-orb → full-orb path; decide story + remove placeholder comment (`aberration-drops.ts`). | product | Story already implemented: essence-of-void + cracked-orb → orb-of-forbidden-power via Amixea (rebirth.ts). Removed superseded alt-design comments, dead `rebirth` import, and "lolololol" placeholder; added cross-ref comment. |
 | [ ] | **Staff of teleportation** — `checkTeleport` always `false`; implement quest lock or delete hook (`staff-of-teleportation.ts`, callers in `schema/locations/resolvers.ts`). | product | |
 | [ ] | **Water terrain drops** — implement or delete commented branch (`schema/monster/resolvers.ts`). | product | |
 | [ ] | **Monk class** — implement `HeroClasses.Monk` or remove commented branch (`db/models/hero/classes.ts`). | product | |

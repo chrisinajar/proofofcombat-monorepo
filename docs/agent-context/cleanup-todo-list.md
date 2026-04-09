@@ -80,7 +80,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
-| [ ] | **`db/models/hero.ts`** — remove stale **`///@TODO redo with modifiers`** and commented artifact health block **or** replace with a one-line “stats via `getUnit`” comment. | safe | |
+| [x] | **`db/models/hero.ts`** — remove stale **`///@TODO redo with modifiers`** and commented artifact health block **or** replace with a one-line “stats via `getUnit`” comment. | safe | Removed TODO + 22-line commented block + 2 unused imports (`ArtifactAttribute`, `ArtifactAttributeType`); left one-line note. |
 | [ ] | **`db/models/trade-offers.ts`** — commented `upgrade`; confirm migrations elsewhere or implement. | verify | |
 | [ ] | **`db/interface.ts`** — commented `create`; document pattern or remove. | safe | |
 | [ ] | **Private chat** — `addChatMessage` commented in `socket/index.ts`; persist or document intentional omission. | product | |

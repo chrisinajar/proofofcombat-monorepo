@@ -14,5 +14,7 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 | 2026-04-08 | Unused import `randomEnchantment` in `aberration-drops.ts`. | proofofcombat-server/schema/monster/aberration-drops.ts | Safe to remove; not referenced anywhere in the file body. |
 | 2026-04-08 | Unused import `createHeroCombatant` in `schema/items/resolvers.ts`. | proofofcombat-server/schema/items/resolvers.ts | Safe to remove; imported from `../../combat/hero` but never called. |
 | 2026-04-08 | **Bug:** `executeAltarBlessing` checks `altar-blessing-emerald` twice (lines ~305-316 duplicate lines ~292-303); `altar-blessing-sapphire` has no handler — sapphire blessings always fail. | proofofcombat-server/schema/locations/npc-shops.ts (`executeAltarBlessing`) | Second `altar-blessing-emerald` block should be `altar-blessing-sapphire` with `SapphireBlessing`. |
+| 2026-04-08 | Unused import `heroLocationName` in `db/models/hero.ts`. | proofofcombat-server/db/models/hero.ts | Safe to remove; imported from helpers but never referenced. |
+| 2026-04-08 | Multiple commented `console.log` lines in `db/models/hero.ts` (`getUnit` lines 97-98, `rollSkill` line 403, `get` lines 898-903). | proofofcombat-server/db/models/hero.ts | Debug artifacts; safe to remove. |
 
 Periodically, promote rows into [cleanup-todo-list.md](./cleanup-todo-list.md) or drop them if obsolete.

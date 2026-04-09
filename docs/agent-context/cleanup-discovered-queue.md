@@ -17,5 +17,6 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 | 2026-04-08 | Unused import `heroLocationName` in `db/models/hero.ts`. | proofofcombat-server/db/models/hero.ts | Safe to remove; imported from helpers but never referenced. |
 | 2026-04-08 | Multiple commented `console.log` lines in `db/models/hero.ts` (`getUnit` lines 97-98, `rollSkill` line 403, `get` lines 898-903). | proofofcombat-server/db/models/hero.ts | Debug artifacts; safe to remove. |
 | 2026-04-08 | **Bug:** `delay` directive ban check is a no-op — `if (account.banned) { if (!context?.auth?.id) throw … }` but `context.auth.id` was already validated at line 34, so the inner throw never fires. Banned users can still take delayed actions. | proofofcombat-server/schema/directives/delay.ts (lines 40-44) | Should likely throw unconditionally inside `if (account.banned)`. |
+| 2026-04-08 | Live `console.log` in `spawnRandomAberration`: `{ totalWeight, roll }` (line 30) and `"ABERRATION SPAWN EVENT!?"` (line 48) — noisy in production; consider removing or gating. | proofofcombat-server/schema/aberration.ts | Not dev timer constants; separate concern from the commented-out timer row. |
 
 Periodically, promote rows into [cleanup-todo-list.md](./cleanup-todo-list.md) or drop them if obsolete.

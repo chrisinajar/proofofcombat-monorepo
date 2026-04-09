@@ -6,5 +6,6 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 |------|------------------|-------------------|-------|
 | 2026-04-04 | Stale audit: `fight.ts` section still claims unused `EnchantmentType` import; verify against current `combat/fight.ts`. | docs/agent-context/combat-runtime-and-consumption.md | |
 | 2026-04-04 | `getEnchantedAttributes` import in `schema/items/resolvers.ts` still appears unused (re-grep before removing). | proofofcombat-server/schema/items/resolvers.ts | See cleanup-todo C unused-import row. |
+| 2026-04-08 | Unused type imports `InventoryItem`, `MonsterInstance`, `Quest` in `treasure.ts` (pre-existing, not from gossip cleanup). | proofofcombat-server/schema/quests/treasure.ts | Safe to remove; vestiges of aspirational TODO. |
 
 Periodically, promote rows into [cleanup-todo-list.md](./cleanup-todo-list.md) or drop them if obsolete.

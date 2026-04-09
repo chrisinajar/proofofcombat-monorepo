@@ -71,7 +71,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
-| [ ] | **`"not implemented"` responses** in `npc-shops.ts` — operational signal of **tradeId mismatch**; optional: structured error codes / logging to distinguish bug vs fallback. | product | [rough-edges-and-incomplete-work.md](./rough-edges-and-incomplete-work.md). |
+| [x] | **`"not implemented"` responses** in `npc-shops.ts` — operational signal of **tradeId mismatch**; optional: structured error codes / logging to distinguish bug vs fallback. | product | Replaced all 8 generic `"not implemented"` returns with `unrecognizedTradeResult` helper: `console.warn` with tradeId + vendor context, player-facing `"Trade not recognized: <tradeId>"`. Domari aberration-null defensive path gets distinct message. Discovered sapphire altar bug → cleanup-discovered-queue. |
 | [ ] | **Quest enum vs `QuestLog` keys** — align naming or document map (e.g. `EssencePurification` ↔ `dailyPurification`). | product | Reduces agent/human confusion. |
 
 ---

@@ -55,7 +55,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [x] | **Treasure / gossip** — implement or scope-down `checkHeroGossip` TODO (random map, dungeon loop); remove dev `console.log` when settled. | product | Scoped down: removed aspirational TODO + dev console.log + dead `getOrCreateQuestItem` call; documented current grant-one-map behavior. `schema/quests/treasure.ts`. |
 | [→ manual 2026-04-08] | **`talk` mutation** — add player-facing text / onboarding (`///@TODO` in resolvers). | product | `schema/quests/resolvers.ts`. |
 | [→ manual 2026-04-08] | **Meet the Queen** — prerequisite / Droop ordering (`meet-the-queen.ts`). | product | |
-| [ ] | **`resetVoid` cataclysm** — hook or remove TODO (`void-travel.ts`). | product | |
+| [x] | **`resetVoid` cataclysm** — hook or remove TODO (`void-travel.ts`). | product | Removed undesigned TODO; fixed "catacalism" typo; void reset is self-contained. |
 | [ ] | **Washed up** — remove or gate **`// return hero;`** debug line (`washed-up.ts`). | safe | |
 | [ ] | **Droop** — delete dead **`// const secret`** scaffolding (`droop.ts`). | safe | |
 | [ ] | **Aberration void reward** — commented cracked-orb → full-orb path; decide story + remove placeholder comment (`aberration-drops.ts`). | product | |

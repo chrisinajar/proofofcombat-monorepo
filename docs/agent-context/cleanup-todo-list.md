@@ -71,7 +71,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
-| [x] | **`"not implemented"` responses** in `npc-shops.ts` — operational signal of **tradeId mismatch**; optional: structured error codes / logging to distinguish bug vs fallback. | product | Replaced all 8 generic `"not implemented"` returns with `unrecognizedTradeResult` helper: `console.warn` with tradeId + vendor context, player-facing `"Trade not recognized: <tradeId>"`. Domari aberration-null defensive path gets distinct message. Discovered sapphire altar bug → cleanup-discovered-queue. |
+| [x] | **`"not implemented"` responses** in `npc-shops.ts` — operational signal of **tradeId mismatch**; optional: structured error codes / logging to distinguish bug vs fallback. | product | Replaced all 8 generic `"not implemented"` returns with `unrecognizedTradeResult` helper: `console.warn` with tradeId + vendor context, player-facing `"Trade not recognized: <tradeId>"`. Domari aberration-null defensive path gets distinct message. Discovered sapphire altar bug → cleanup-discovered-queue (fixed 2026-04-08). |
 | [x] | **Quest enum vs `QuestLog` keys** — align naming or document map (e.g. `EssencePurification` ↔ `dailyPurification`). | product | Added `QUEST_LOG_FIELD` canonical map in `helpers.ts`; refactored `setQuestLogProgress` to derive field from quest enum (removed redundant `entryName` param); annotated schema; co-located tests. |
 
 ---

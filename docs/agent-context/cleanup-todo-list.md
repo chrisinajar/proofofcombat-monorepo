@@ -93,7 +93,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
 | [x] | **`schema/aberration.ts`** — remove or isolate **dev timer** commented constants to a dev-only block. | safe | Removed 3 commented-out fast-timer overrides and 1 commented debug log; void-keeper block left (disabled feature, not dev timer). |
-| [ ] | **`schema/monster/aberration-roam.ts`** — commented `handleAberrationSettlementBattle` follow-up. | product | |
+| [x] | **`schema/monster/aberration-roam.ts`** — commented `handleAberrationSettlementBattle` follow-up. | product | Removed dead `handleAberrationSettlementBattle` + `checkSettlementOwnership` + no-op settlement checks in `handleAberrationRoam`; eliminated 2 wasted DB reads per roam tick. |
 | [ ] | **`db/models/player-location.ts`** — commented distance check — dead or future PvP/move validation? | verify | |
 | [ ] | **`schema/locations/resolvers.ts`** — commented `return location.type === "altar"` (altar detection). | verify | |
 

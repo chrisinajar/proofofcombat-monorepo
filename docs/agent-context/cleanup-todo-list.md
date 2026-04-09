@@ -84,7 +84,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 | [x] | **`db/models/trade-offers.ts`** — commented `upgrade`; confirm migrations elsewhere or implement. | verify | Removed: commented `upgrade` was copy-pasted from `system.ts` for a `chat` field that `TradeOffer` never had; also removed dead `Optional` type alias and unused `BaseModel`/`TradeOfferInput` imports. Base class no-op `upgrade` is correct. |
 | [x] | **`db/interface.ts`** — commented `create`; document pattern or remove. | safe | Removed commented `create` stub + unused `uuid` import; ID generation already happens at call sites (trade-offers, artifact, items/helpers). |
 | [x] | **Private chat** — `addChatMessage` commented in `socket/index.ts`; persist or document intentional omission. | product | Documented intentional omission: global ring buffer would leak private messages; removed dead commented `addChatMessage` call. |
-| [ ] | **`schema/account/resolvers.ts`** — commented `account` fetch — dead path or WIP? | verify | |
+| [x] | **`schema/account/resolvers.ts`** — commented `account` fetch — dead path or WIP? | verify | WIP: implemented ban check for `chat` query; banned users no longer receive chat tokens. Test added. |
 
 ---
 

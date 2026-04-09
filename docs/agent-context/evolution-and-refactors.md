@@ -6,7 +6,7 @@ This document captures **intent and history** as understood from maintainer narr
 
 **Problem shape:** Logic walked inventory/enchantments in a simple loop and applied effects. Combat processed **one side then the other**, which produced **asymmetry**. Everything was largely **hard-coded**, so dynamic systems (notably **artifacts** with configurable affix behavior) could not be expressed cleanly.
 
-**Residual footprint:** Occasional comments about “legacy” fields or behaviors (for example `rangedSecondAttackChance` on `Unit` base values) and tests labeled “legacy” where they exercise older data shapes. Do not assume every “legacy” label is removable without checking persisted data and callers.
+**Residual footprint:** Occasional comments about “legacy” fields or behaviors, and tests labeled “legacy” where they exercise older data shapes. (Note: `rangedSecondAttackChance`, formerly cited as an example here, has been removed — it had zero readers.) Do not assume every “legacy” label is removable without checking persisted data and callers.
 
 ## Era 2 — Units and modifiers (current structural backbone)
 

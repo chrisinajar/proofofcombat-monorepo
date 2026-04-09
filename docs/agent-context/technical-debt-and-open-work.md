@@ -23,7 +23,7 @@ This is a **point-in-time** inventory derived from **code search and spot reads*
 ## Legacy compatibility patterns
 
 - **`upgrade()`** paths often mention **legacy records** gaining defaults — normal for long-lived player data.
-- **`rangedSecondAttackChance`** — marked legacy in `Unit` base values; combat comments describe ranged as **single-hit cadence** now. Potential cleanup candidate **after** proving no gameplay/system reads it.
+- ~~`rangedSecondAttackChance`~~ — **removed** (no code read or set this legacy field; `rangedAttackSpeedMultiplier` is the active replacement).
 
 ## Areas likely to reward cleanup (hypotheses)
 

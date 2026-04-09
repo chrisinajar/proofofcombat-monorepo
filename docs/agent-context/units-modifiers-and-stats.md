@@ -59,7 +59,7 @@ If there is **no valid weapon** and `isSecondAttack` is true, returns **0** (no 
 
 ### Legacy / unused-ish fields
 
-- **`rangedSecondAttackChance`** — comment marks it **legacy** (previously randomized ranged second attack); combat comments elsewhere describe ranged as single-hit cadence now. Treat as **possibly obsolete** but still present in `baseValues`.
+- ~~`rangedSecondAttackChance`~~ — **removed**. Was legacy (previously randomized ranged second attack); no code read or set it. `rangedAttackSpeedMultiplier` is the active replacement.
 
 ## `Modifier` base (`calculations/modifiers/modifier.ts`)
 

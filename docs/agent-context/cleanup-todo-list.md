@@ -111,7 +111,7 @@ Purpose: **actionable checklist** derived from **`docs/agent-context/`** (especi
 
 | Done | Item | Tag | Notes |
 |------|------|-----|--------|
-| [ ] | Fill **`quest-descriptions.ts`** for `Quest` enum values that still return **`""`** so quest panel isn’t blank for implemented quests. | product | [rough-edges-and-incomplete-work.md](./rough-edges-and-incomplete-work.md). |
+| [x] | Fill **`quest-descriptions.ts`** for `Quest` enum values that still return **`""`** so quest panel isn’t blank for implemented quests. | product | Added descriptions for DroopsQuest, TavernChampion, MinorClassUpgrades, MeetTheQueen, EssencePurification; co-located test enforces completeness. |
 
 ---
 

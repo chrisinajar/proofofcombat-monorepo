@@ -2,7 +2,7 @@
   "scripts": {
     "push-server": "git subtree push --prefix=proofofcombat-server server $(git branch --show-current)",
     "push-ui": "git subtree push --prefix=proofofcombat-ui ui $(git branch --show-current)",
-    "push": "yarn push-server && yarn push-ui",
+    "push": "git push && yarn push-server && yarn push-ui",
     "test": "jest",
     "agent:bootstrap": "nvm use 20.11.0 >/dev/null 2>&1 || true && yarn --cwd proofofcombat-server install && yarn --cwd proofofcombat-ui install && yarn --cwd proofofcombat-ui playwright install || true",
     "agent:runbook:new": "node scripts/agent-runbook-new.js",

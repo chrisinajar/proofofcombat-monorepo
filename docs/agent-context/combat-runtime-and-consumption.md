@@ -1,8 +1,8 @@
-# Combat runtime: consuming units (dead code, stale fields, glue)
+# Combat runtime: consuming units (stale fields, glue)
 
 Scope: **`proofofcombat-server/combat/**`** and the bridge **`combat/enchantments.ts`**. This is **not** the modifier/unit pipeline (`calculations/`); it is the code that **calls** `unit.stats`, `getBaseDamage`, and `enterCombat` during hits and enchantment ticks.
 
-Agents already read source well — this file only records **non-obvious drift**, **unused pieces**, and **data-shape lies**.
+Agents already read source well — this file only records **non-obvious drift** and **data-shape lies**.
 
 ---
 
@@ -10,7 +10,7 @@ Agents already read source well — this file only records **non-obvious drift**
 
 For **hit chance**, **weapon damage**, **armor**, **resists**, **amplification**, **crit luck**, combat reads **`attacker.unit` / `victim.unit`** (via `getEnchantedAttributes` → `unit.stats` / `getBaseDamage`), **not** the loose fields on `Combatant` except where noted below.
 
-Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is often a **legacy snapshot** or **test plumbing**. The old flat **`damageReduction`** number was **removed** from `Combatant` — mitigation uses **`unit.stats`** (e.g. `percentageDamageReduction`, armor), not a parallel field.
+Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is often a **legacy snapshot** or **test plumbing**. Mitigation uses **`unit.stats`** (e.g. `percentageDamageReduction`, armor), not parallel flat fields.
 
 ---
 
@@ -18,7 +18,6 @@ Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is 
 
 | Field | Role in combat code | Notes |
 |-------|---------------------|--------|
-| ~~`damageReduction: number`~~ (removed) | Was **never read** in combat math | **Deleted** from `Combatant`; use **`unit.stats`** for reduction-related stats. |
 | `attributes` (initial) | **Overwritten** in `enchantCombatants` | Heroes seed from **`heroUnit.baseValues`** in `createHeroCombatant`, not full modified stats — **misleading** until `getEnchantedAttributes` runs. |
 | `skills?` | **Not read** in `combat/` | Only populated on heroes; skills affect stats via **`BasicHeroModifier` on the unit**, not via this field. |
 | `EnchantedCombatant` | **Alias of `Combatant`** | Modifier stats (**`percentageDamageIncrease`**, mesmerize/focus, bonus tiers, etc.) live only on **`unit.stats`**. `enchantCombatants` syncs **`attributes`** from **`unit.stats`**; it no longer copies parallel flat fields. **`Hero.combatStats`** reads amplification/reduction from **`unit.stats`**. |
@@ -29,20 +28,11 @@ Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is 
 
 - **`enterCombat` runs once per `getEnchantedAttributes` call** (per pair). Inside one **weapon swing**, **`calculateHit`** calls it once and **`calculateDamage`** calls it **once** (shared between `calculateDamageValues` and the rest of `calculateDamage`). So **`enterCombat` can run twice per hit** (hit + damage). Stat-steal side is partially guarded (`StatStealVictimModifier` removes an existing victim mod before re-adding — see `calculations/modifiers/stat-steal-modifier.ts`); **`applyAttackModifiers` / counterspells still re-run** on each `enterCombat`. Further merging hit + damage into a single `getEnchantedAttributes` would need API threading and broader tests.
 
-- **`attacker`’s `attackType` in `enchantCombatants`** is read only to satisfy typing; flattening does not depend on it for the victim’s copy.
+- **`attacker`'s `attackType` in `enchantCombatants`** is read only to satisfy typing; flattening does not depend on it for the victim's copy.
 
 ---
 
 ## `calculate-damage.ts`
-
-**Unused / dead in implementation (verify before deleting — may be lint-suppressed):**
-
-- Imports: **`EnchantmentType`**, **`getItemPassiveUpgradeTier`** (from `./helpers`) — **not referenced** in the file.
-- `calculateDamageValues`: **`let damage = 0`** — unused.
-- **`baseDamageDecrease`** — assigned, never used.
-- **`attackerDamageStat`**, **`victimReductionStat`** — read from `attributes` then **never used** (likely leftover from an older reduction formula).
-
-**Behavior notes:**
 
 - **`attacker.class` / `attackerInput.health`** for Blood use **`Combatant`**, not only `unit` — correct for **current health** on the snapshot.
 - Third crit tier: extra `damage *= 3` roll using **`trippleCriticalChance`** (Gambler/Daredevil); no separate boolean is tracked or returned—only **`critical`** / **`doubleCritical`** are part of the `calculateDamage` result. Typo **`tripple`** is consistent in identifiers.
@@ -59,7 +49,6 @@ Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is 
 
 ## `calculate-enchantment-damage.ts`
 
-- Imports **`AttackType`**, **`EnchantmentType`**, **`HeroClasses`**, **`attributesForAttack`** — **unused** (nothing in the file references them).
 - Uses **`attacker.maxHealth`** on `EnchantedCombatant` for regen — **`Combatant.maxHealth`** is required on the snapshot.
 
 ---
@@ -73,15 +62,7 @@ Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is 
 
 ## `fight.ts`
 
-- **`EnchantmentType` import** — **unused**.
 - Local type **`AttackCombatantResult`** — return shape of `attackCombatant`; only used inside this file.
-
----
-
-## `item-helpers.ts` vs `helpers.ts`
-
-- **`getItemPassiveUpgradeTier`** is **duplicated**: identical implementation in **`combat/helpers.ts`** and **`combat/item-helpers.ts`**.
-- **`calculations/units/unit.ts`** imports from **`combat/item-helpers`** only. **`calculate-damage.ts`** imports **`helpers.ts`** for **`attributesForAttack`** but also pulls **`getItemPassiveUpgradeTier`** there **without using it** (see above). Net: **two copies of one helper** + **one dangling import**.
 
 ---
 
@@ -103,23 +84,38 @@ Anything on **`Combatant`** that duplicates that (e.g. initial `attributes`) is 
 
 ---
 
-## Related (outside `combat/` but same confusion)
-
-- **`schema/items/resolvers.ts`** imports **`getEnchantedAttributes`** but **does not use it** — **unused import** at time of writing; combat consumers are unaffected.
-
----
-
 ## Quick map: file responsibilities
 
 | File | Consumes units? | Notes |
 |------|-----------------|--------|
 | `constants.ts` | No | `attributesForAttack` mapping only. |
-| `helpers.ts` | Via DB for luck | `createLuck`; duplicate `getItemPassiveUpgradeTier`. |
+| `helpers.ts` | Via DB for luck | `createLuck`. |
 | `hero.ts` | Yes | Builds `Combatant` + equipment mirror for UI/two-weapon logic; seeds **base** attributes. |
 | `monster.ts` | Yes | Builds mob `Unit`. |
 | `enchantments.ts` | Yes | **Only** place that flattens `unit.stats` onto combatant-shaped objects for combat. |
 | `calculate-*.ts` | Yes | Core math. |
-| `fight.ts` | Yes | Scheduling + mesmerize + logging; unused `EnchantmentType` import. |
+| `fight.ts` | Yes | Scheduling + mesmerize + logging. |
 | `fight-monster.ts` / `fight-hero.ts` | Yes | Thin wrappers over `executeFight`. |
 | `enchantment-order.ts` | No | Counterspell order only (`EnchantmentCounterSpellOrder`). |
 | `enchantment-groups.ts` | No | Expanded enchant lists for modifier layer. |
+
+---
+
+## Resolved (archived)
+
+Items below were identified in earlier audits and have since been cleaned up. Kept here for historical context.
+
+- **Unused imports in `calculate-damage.ts`** (`EnchantmentType`, `getItemPassiveUpgradeTier` from `./helpers`) — removed.
+- **Dead locals in `calculate-damage.ts`** (`let damage = 0`, `baseDamageDecrease`, `attackerDamageStat`, `victimReductionStat`) — removed.
+- **Duplicate `getItemPassiveUpgradeTier`** in both `helpers.ts` and `item-helpers.ts` — deduplicated; single implementation now in `item-helpers.ts`.
+- **`createMonsterLuck`** in `monster.ts` (never called; live path uses `createLuck`) — removed.
+- **`EnchantmentActivationOrder`** in `enchantment-order.ts` (unused anywhere) — removed.
+- **`AttackCombcatantResult`** typo in `fight.ts` — fixed to `AttackCombatantResult`.
+- **Unused `EnchantmentType` import** in `fight.ts` — removed.
+- **Unused imports in `calculate-enchantment-damage.ts`** (`AttackType`, `EnchantmentType`, `HeroClasses`, `attributesForAttack`) — removed.
+- **`Combatant.damageReduction` flat field** — removed from `Combatant`; `AttackAttributes.damageReduction` (a type key, not a number) remains and is unrelated.
+- **Flattened `EnchantedCombatant` fields** (bonusAccuracy, lifesteal, etc.) — removed; `EnchantedCombatant` is now a type alias for `Combatant`; reads use `unit.stats`.
+- **`isSecondAttack` threaded into `calculateOdds` / `calculateHit`** but unused inside hit math — documented as intentional API stability; hit chance is main-hand only.
+- **Duplicate `getEnchantedAttributes` / `enterCombat` per swing** reduced from triple to double call (hit + damage).
+- **`trippleCritical`** flag — dropped unused local flag; third crit tier still applies to damage but is not surfaced in the result.
+- **`schema/items/resolvers.ts`** unused `getEnchantedAttributes` import — removed.

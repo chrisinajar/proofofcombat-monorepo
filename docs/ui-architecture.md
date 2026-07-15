@@ -88,6 +88,8 @@ This document maps the UI structure and highlights opportunities to improve the 
 
 # UX Opportunities (Prioritized)
 
+> **Note:** This section is a point-in-time snapshot of improvement ideas. Some items may have been partially or fully addressed since it was written. Verify against current code before acting on any item.
+
 1) Navigation & Information Hierarchy
 - Problem: Long content blocks on the Welcome tab with minimal visual hierarchy; `<br />` used for spacing.
 - Improvements:

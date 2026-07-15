@@ -1,19 +1,3 @@
----
-id: day-night-cycles
-description: Game time, timezones, and twilight rules
-owner: server
-triggers:
-  - proofofcombat-server/constants/helpers.ts
-  - proofofcombat-server/constants/index.ts
-  - proofofcombat-server/constants/helpers.test.ts
-checklist:
-  - Understand constants and orientation
-  - Normalize daytime using adjusted time
-  - Use TIMEZONE_COUNT (no hard-coded 24)
-  - Cover wrap-around in tests
-  - Sync runbooks (`yarn agent:runbook:sync`)
-source: runbook
----
 
 # Day/Night Cycles & Timezones
 
@@ -53,8 +37,3 @@ Gotchas
 - Precision: Use `toBeCloseTo` for fractional assertions due to float rounding.
 - Orientation assumptions: Zone indices depend on angle normalization; confirm with angle tests if changing angle math.
 - Twilight threshold: `TWILIGHT_RADIUS` compares to percent-radius toward the edge; small changes affect many locations.
-
-After Changes
-- Run `yarn --cwd proofofcombat-server test`.
-- Run `yarn agent:runbook:sync` to update `.cursor/skills/`.
-- Run `yarn agent:check` to verify no drift and guardrails.

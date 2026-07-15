@@ -20,7 +20,6 @@ What to do when adding a new field:
 - Regenerate code and validate:
   - Server: `yarn --cwd proofofcombat-server generate`
   - UI: ensure the server is running locally, then `yarn --cwd proofofcombat-ui generate`
-  - Run: `yarn agent:check` to catch codegen or runbook drift.
 
 Common pitfalls:
 

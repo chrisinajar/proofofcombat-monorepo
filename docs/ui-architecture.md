@@ -4,7 +4,7 @@ This document maps the UI structure and highlights opportunities to improve the 
 
 - Tech stack: Next.js 12 (static export), React 18, MUI v5, Apollo Client, GraphQL Codegen, Socket.IO, notistack.
 - Conventions: GraphQL ops in `*.graphql` (no inline gql); generated hooks under `src/generated/`; tests colocated `*.test.ts[x]`.
-- Relevant runbooks: `runbook-index`, `project-description`, `ui-should-be-static`, `always-keep-accessibility-in-mind`.
+- See also: `docs/project-description.md`, AGENTS.md (UI conventions, accessibility).
 
 ## High-Level Flow
 
@@ -82,7 +82,7 @@ This document maps the UI structure and highlights opportunities to improve the 
 
 - Unit tests colocated (e.g., `src/components/chat/artifact-modal.test.tsx`)
 - UI unit tests run with JSDOM (`src/setupTests.ts`)
-- E2E tests in `proofofcombat-ui/e2e/` (Playwright). See `docs/runbooks/e2e-tests.md`
+- E2E tests in `proofofcombat-ui/e2e/` (Playwright). See `e2e-tests` skill.
 
 ---
 
@@ -174,5 +174,5 @@ This document maps the UI structure and highlights opportunities to improve the 
 
 ## Suggested Follow-ups
 
-- Validate these changes against `docs/runbooks/ui-should-be-static.md` to preserve static export.
-- Consider E2E coverage additions after UX changes (selectors via `data-testid`), see `docs/runbooks/e2e-tests.md`.
+- Validate changes preserve static export (see AGENTS.md UI conventions and `static-export-troubleshooting` skill).
+- Consider E2E coverage additions after UX changes (selectors via `data-testid`), see `e2e-tests` skill.

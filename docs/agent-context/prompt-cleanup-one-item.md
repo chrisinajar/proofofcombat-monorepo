@@ -9,7 +9,7 @@ Use this to chip away at [cleanup-todo-list.md](./cleanup-todo-list.md) **slowly
 | [cleanup-todo-list.md](./cleanup-todo-list.md) | Main checklist (`[ ]` / `[x]`). |
 | [cleanup-manual-queue.md](./cleanup-manual-queue.md) | Items that could not be completed safely this round. |
 | [cleanup-discovered-queue.md](./cleanup-discovered-queue.md) | Unrelated findings to fix **later** (no scope creep). |
-| [AGENTS.md](../../AGENTS.md) | Runbooks, tests, repo conventions — follow before schema/UI changes. |
+| [AGENTS.md](../../AGENTS.md) | Skills, tests, repo conventions — follow before schema/UI changes. |
 
 ---
 
@@ -30,7 +30,7 @@ Use this to chip away at [cleanup-todo-list.md](./cleanup-todo-list.md) **slowly
 Use everything inside the fence as the **entire** user message (adjust nothing unless the human told you to).
 
 ```text
-You are working on the Proof of Combat repo. Follow AGENTS.md (runbooks, tests, no inline gql in UI).
+You are working on the Proof of Combat repo. Follow AGENTS.md (skills, tests, no inline gql in UI).
 
 GOAL: Process exactly ONE incomplete item from docs/agent-context/cleanup-todo-list.md — the first table row whose **Done** column is still “[ ]”, reading the file **top to bottom** (section A, then B, …). One checklist row = one outcome = **one git commit** at the end (never push unless the human said so).
 

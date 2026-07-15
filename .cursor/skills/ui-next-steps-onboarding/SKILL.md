@@ -31,5 +31,4 @@ Do nots
 Checklist before commit
 - Built UI and exported statically.
 - Lint warnings are baseline-only; no new inline gql.
-- Run `yarn agent:runbook:sync` and `yarn agent:check` to verify runbook drift and guardrails.
 

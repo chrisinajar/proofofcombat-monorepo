@@ -32,5 +32,5 @@ Always disambiguate by path in reviews and AI prompts.
 
 ## Testing conventions
 
-- Tests are **co-located** as `*.test.ts` next to sources (`always-colocate-tests` runbook).
+- Tests are **co-located** as `*.test.ts` next to sources (see AGENTS.md testing guidelines).
 - Prefer **deterministic** damage tests by mocking `Math.random` where used (see `calculate-damage-multipliers.test.ts`).

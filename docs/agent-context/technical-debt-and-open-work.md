@@ -40,7 +40,7 @@ From repo guidelines:
 
 - Full test suite: `yarn test` (root orchestrates both packages).
 - Server-only focus: `yarn --cwd proofofcombat-server test` targeting relevant `*.test.ts` files.
-- Typecheck: `yarn --cwd proofofcombat-server ts --pretty false` (see **`ts-checks`** runbook).
+- Typecheck: `yarn --cwd proofofcombat-server ts --pretty false` (see **`ts-checks`** skill).
 
 ## Suggested next documentation steps (optional)
 

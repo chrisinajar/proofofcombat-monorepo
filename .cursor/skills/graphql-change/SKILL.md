@@ -12,6 +12,5 @@ Steps:
 5) If anything surprising came up, add a short note under Gotchas.
 
 Gotchas:
-- If generated files changed but weren’t committed, `agent:check` will fail (drift guard).
-- Do not import `gql` in UI; see runbook `never-use-inline-graphql`.
-
+- If generated files changed but weren't committed, CI will fail (drift guard).
+- Do not import `gql` in UI; always use `.graphql` files and generated hooks.

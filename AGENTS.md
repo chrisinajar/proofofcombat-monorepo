@@ -1,20 +1,11 @@
 # Repository Guidelines
 
-## Runbooks First
-- **Source of truth:** `docs/runbooks/*.md`. **Generated for Cursor:** `.cursor/skills/<id>/SKILL.md` (do not edit by hand — run `yarn agent:runbook:sync` after changing runbooks).
-- Always consult runbooks before making changes: open `docs/runbooks/` or the synced skills under `.cursor/skills/`, and identify the 1–3 most relevant runbooks by topic, `triggers` globs in runbook frontmatter, area, or owner.
-- Start with the index: see `docs/runbooks/index.md` for a concise list of all runbooks with summaries and when to use them.
-  - From the index, choose 1–3 runbooks whose globs/area/owner match your change.
-- During planning, add a step to consult runbooks and name which ones you used (by `id`/filename). If none apply, state that explicitly.
-- When answering or implementing, reference runbooks by `id` (e.g., `e2e-tests`, `graphql-change`) and follow their checklists. If a runbook contradicts a general guideline, prefer the runbook.
-- Keep runbooks in sync: run `yarn agent:runbook:sync` after editing or adding runbooks (updates `.cursor/skills/`); run `yarn agent:check` to verify there’s no drift.
-- When you discover a new repeatable workflow or gotcha, create or update a runbook with `yarn agent:runbook:new <id> "Title"`, then sync.
-
-
 ## Project Structure
 - `proofofcombat-server`: Apollo GraphQL + Express + Socket.IO (TypeScript). Tests sit next to code (`*.test.ts`). Admin-only resolvers live in `schema/admin/` and require `@auth @admin`.
 - `proofofcombat-ui`: Next.js app with Apollo Client. UI code in `src/`, pages in `pages/`, static assets in `public/`. Playwright e2e tests in `e2e/`.
 - Root `jest.config.js` orchestrates both packages; CI runs e2e on PRs.
+- Reference docs live in `docs/` (project overview, NPC lore, game mechanics).
+- Procedural skills live in `.cursor/skills/` — consult them for detailed workflows.
 
 ## Build, Test, Dev
 - Node: `nvm use 20.11.0` (Yarn Classic).
@@ -22,24 +13,40 @@
 - Dev: server `yarn --cwd proofofcombat-server dev` (uses `HTTP_PORT/HTTPS_PORT/SOCKET_PORT`); UI `yarn --cwd proofofcombat-ui dev`.
 - Codegen (GraphQL): `yarn --cwd proofofcombat-server generate` and `yarn --cwd proofofcombat-ui generate` after schema or `.graphql` changes.
 - Tests: all `yarn test`; UI e2e `yarn --cwd proofofcombat-ui e2e` (run `yarn --cwd proofofcombat-ui playwright install` once).
+- Bootstrap: `yarn agent:bootstrap` installs deps for server and UI and Playwright.
+
+## Package Management
+- Use Yarn Classic throughout. Never use npm.
+- Always run commands within one of the two sub-projects (`proofofcombat-server/` or `proofofcombat-ui/`), not the root directory, unless using a root-level script like `yarn test`.
 
 ## Test Driven Bug Fixing
- - When an issue is found, before fixing it, always create a failing unit test first
- - Once a failing unit is created, fix the issue and then re-run the test to ensure that the fix worked
- - Creating the test first makes it so that we're also ensuring that the unit test checks what we think it does
-
-## Coding Style & Naming
-- 2-space indent, LF, UTF‑8 (`.editorconfig`). TypeScript throughout; prefer kebab-case filenames (e.g., `artifact-selection-box.tsx`).
-- Linting: server ESLint `@typescript-eslint`; UI `next/core-web-vitals`. Run `yarn --cwd <pkg> lint`.
-
-## GraphQL & UI Conventions
-- UI: never inline `gql` tags; write queries in `.graphql` files and use generated hooks. Do not edit generated files.
-- UI must remain static-exportable (no SSR). `yarn --cwd proofofcombat-ui build` creates static `out/`.
+- When an issue is found, before fixing it, always create a failing unit test first.
+- Once a failing test is created, fix the issue and re-run the test to ensure the fix worked.
+- Creating the test first ensures the test actually checks what we think it does.
 
 ## Testing Guidelines
-- Co-locate tests with code; name `*.test.ts[x]`.
+- Co-locate tests with code; name `*.test.ts[x]`. Never use `__tests__` directories.
 - UI unit tests run in `jsdom` with `src/setupTests.ts`.
 - E2E: select elements by `id` or `data-testid`; avoid timeouts—fix selectors or flow instead.
+- All tests should be within their respective sub-project; there are no global tests.
+
+## Coding Style & Naming
+- 2-space indent, LF, UTF-8 (`.editorconfig`). TypeScript throughout; prefer kebab-case filenames (e.g., `artifact-selection-box.tsx`).
+- Linting: server ESLint `@typescript-eslint`; UI `next/core-web-vitals`. Run `yarn --cwd <pkg> lint`.
+
+## GraphQL Conventions
+- UI: never inline `gql` tags; write queries in `.graphql` files and use generated hooks. Do not edit generated files (`types/graphql.ts` on server, `src/generated/graphql.tsx` on UI).
+- After schema or `.graphql` changes, run `yarn generate` in both server and UI.
+- Do not change codegen configuration (`codegen.yml`). Use the existing `yarn generate` scripts as-is.
+- See the `graphql-change` and `add-ui-query` skills for detailed workflows.
+
+## UI Conventions
+- UI must remain static-exportable (no SSR). `yarn --cwd proofofcombat-ui build` creates static `out/`.
+- Accessibility matters: we have blind players. Leverage Material UI for a11y, ensure screen reader support, use correct element semantics, consider header levels and tab order.
+
+## Admin Code
+- All admin endpoints live in `schema/admin/` and require `@auth @admin` decorators.
+- Any testing functionality can be used to cheat — always treat it as admin-only.
 
 ## Commits & PRs
 - Commits: short, imperative, optionally scoped (e.g., `server: refactor pathfinding`).
@@ -55,18 +62,22 @@
     - Bullet 1
     - Bullet 2
     MSG`
-- Avoid shell-escaped artifacts: don’t wrap the entire message with quotes that include escaped sequences (e.g., `\n`, `\t`).
-- Keep subject concise; body uses bullets for clarity. Example:
-  - `git commit -m "server: dynamic delay override" -m "- delay directive: persist final delay" -m "- account fields prefer context delay"`
+- Keep subject concise; body uses bullets for clarity.
 
 ## Security & Config
 - Never commit secrets. Copy `.env.example` to `.env` in `proofofcombat-ui/`. Server loads env via `dotenv`; TLS (if used) from `privatekey.pem`/`certificate.pem`.
 
-## Agent Quickstart
-- `yarn agent:bootstrap`: install deps for server and UI; install Playwright.
-- `yarn agent:status`: show environment, install status, and runbook ↔ skills sync drift.
-- `yarn agent:runbook:sync`: sync `docs/runbooks` to `.cursor/skills` (Agent Skills).
-- `yarn agent:runbook:new <id> "Title"`: scaffold a new runbook.
-- `yarn agent:check`: guardrails (no inline gql), runbook ↔ skills drift check, codegen drift.
-
-Runbooks live in `docs/runbooks/` with YAML frontmatter (`id`, `description`, `triggers`, etc.). The old workflow synced copies into **`.cursor/rules/*.mdc`**; that is **replaced** by Agent Skills under **`.cursor/skills/`**. Update runbooks whenever you discover a gotcha; then run `yarn agent:runbook:sync` to regenerate skills and avoid drift.
+## Skills
+Skills in `.cursor/skills/` provide detailed procedural workflows. Consult the relevant skill when performing these tasks:
+- `graphql-change`: Making schema changes across server and UI
+- `add-admin-resolver`: Adding admin-only resolvers
+- `add-ui-query`: Adding new GraphQL operations in the UI
+- `e2e-tests`: Writing and maintaining Playwright tests
+- `e2e-triage`: Debugging failing E2E tests
+- `commit-sequencing`: Preparing multi-commit changes
+- `finalizing-changes`: Pre-commit checklist (tests, cleanup, a11y)
+- `fix-codegen-drift`: Resolving generated types drift
+- `static-export-troubleshooting`: Fixing Next.js export failures
+- `ts-checks`: Running TypeScript checks reliably
+- `ui-next-steps-onboarding`: Maintaining the Welcome onboarding card
+- `upgrade-new-fields`: Adding fields to persisted models

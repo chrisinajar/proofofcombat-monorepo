@@ -15,8 +15,8 @@ This folder is **standalone documentation** for engineers and AI coding agents w
 
 ## Relationship to other docs
 
-- Authoritative procedural docs live in `docs/runbooks/` (see `docs/runbooks/index.md`). After edits, `yarn agent:runbook:sync` copies them into **`.cursor/skills/`** as Cursor Agent Skills (generated files — edit runbooks, not `SKILL.md` directly). This folder is **descriptive** (what the code does), not procedural (how to change GraphQL safely).
-- The runbook `project-description` gives a short project overview; this folder goes deeper on combat and calculations.
+- Procedural workflows live in `.cursor/skills/` (edit directly). This folder is **descriptive** (what the code does), not procedural (how to change GraphQL safely).
+- `docs/project-description.md` gives a short project overview; this folder goes deeper on combat and calculations.
 
 ## Scope
 

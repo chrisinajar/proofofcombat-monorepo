@@ -1,14 +1,3 @@
----
-id: project-description
-description: Project overview, gameplay, and story
-owner: server, ui
-triggers:
-  - docs/**
-checklist:
-  - Keep structure section current
-  - Update tech stack if upgraded
-source: runbook
----
 # Project Overview
 This is a game called "Proof of Combat", a browser-based RPG where players progressively become more powerful by defeating monsters and completing quests. The project consists of both the server-side game logic and the client-side user interface in a unified repository structure.
 
@@ -46,4 +35,3 @@ This is a game called "Proof of Combat", a browser-based RPG where players progr
 - `pages/` contains Next.js pages
 - `public/` contains static assets
 - `e2e/` contains Playwright tests
-

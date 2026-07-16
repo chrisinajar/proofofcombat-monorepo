@@ -4,9 +4,7 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 
 ## Still open
 
-| Date | One-line finding | Suggested file(s) | Notes |
-|------|------------------|-------------------|-------|
-| 2026-04-08 | **Bug:** `delay` directive ban check is a no-op — `if (account.banned) { if (!context?.auth?.id) throw … }` but `context.auth.id` was already validated at line 34, so the inner throw never fires. Banned users can still take delayed actions. | proofofcombat-server/schema/directives/delay.ts (lines 40-44) | Should likely throw unconditionally inside `if (account.banned)`. |
+(No items — queue is empty.)
 
 ## Resolved
 
@@ -25,6 +23,7 @@ When **[prompt-cleanup-one-item.md](./prompt-cleanup-one-item.md)** surfaces **u
 | 2026-07-15 | Placeholder comment `// asdf asdf` in `movingMountainReward`. | Resolved — removed from `aberration-drops.ts`. |
 | 2026-07-15 | Multiple commented/live `console.log` lines in `db/models/hero.ts` (4 occurrences). | Resolved — all 4 removed (2 commented in `getUnit`, 1 commented + 1 live in `rollSkill`). |
 | 2026-07-15 | Live `console.log` in `spawnRandomAberration` (`{ totalWeight, roll }` and `"ABERRATION SPAWN EVENT!?"`). | Resolved — both removed from `aberration.ts`. Init log kept. |
+| 2026-07-16 | **Bug:** `delay` directive ban check was a no-op — redundant `if (!context?.auth?.id)` inside `if (account.banned)`. | Resolved — removed redundant inner check; ban now throws unconditionally. |
 
 ---
 

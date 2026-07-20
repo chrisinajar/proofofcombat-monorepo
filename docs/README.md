@@ -1,6 +1,6 @@
 # Documentation Index
 
-This folder contains reference documentation for the Proof of Combat project. For procedural workflows (how to change GraphQL, run tests, etc.), see `.cursor/skills/`. For repo conventions and build commands, see `AGENTS.md`.
+This folder contains reference documentation for the Proof of Combat project. For procedural workflows (how to change GraphQL, run tests, etc.), see `.claude/skills/`. For repo conventions and build commands, see `AGENTS.md`.
 
 ## Game Reference
 

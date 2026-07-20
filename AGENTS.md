@@ -5,7 +5,7 @@
 - `proofofcombat-ui`: Next.js app with Apollo Client. UI code in `src/`, pages in `pages/`, static assets in `public/`. Playwright e2e tests in `e2e/`.
 - Root `jest.config.js` orchestrates both packages; CI runs e2e on PRs.
 - Reference docs live in `docs/` (project overview, NPC lore, game mechanics).
-- Procedural skills live in `.cursor/skills/` — consult them for detailed workflows.
+- Procedural skills live in `.claude/skills/` — consult them for detailed workflows.
 
 ## Build, Test, Dev
 - Node: `nvm use 20.11.0` (Yarn Classic).
@@ -68,7 +68,7 @@
 - Never commit secrets. Copy `.env.example` to `.env` in `proofofcombat-ui/`. Server loads env via `dotenv`; TLS (if used) from `privatekey.pem`/`certificate.pem`.
 
 ## Skills
-Skills in `.cursor/skills/` provide detailed procedural workflows. Consult the relevant skill when performing these tasks:
+Skills in `.claude/skills/` provide detailed procedural workflows. Consult the relevant skill when performing these tasks:
 - `graphql-change`: Making schema changes across server and UI
 - `add-admin-resolver`: Adding admin-only resolvers
 - `add-ui-query`: Adding new GraphQL operations in the UI

@@ -15,7 +15,7 @@ This folder is **standalone documentation** for engineers and AI coding agents w
 
 ## Relationship to other docs
 
-- Procedural workflows live in `.cursor/skills/` (edit directly). This folder is **descriptive** (what the code does), not procedural (how to change GraphQL safely).
+- Procedural workflows live in `.claude/skills/` (edit directly). This folder is **descriptive** (what the code does), not procedural (how to change GraphQL safely).
 - `docs/project-description.md` gives a short project overview; this folder goes deeper on combat and calculations.
 
 ## Scope
